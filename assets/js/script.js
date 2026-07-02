@@ -29,7 +29,7 @@
       'form.phone': 'Phone', 'form.email': 'Email', 'form.emailPlaceholder': 'name@email.com',
       'form.service': 'Service Needed', 'form.message': 'Message', 'form.messagePlaceholder': 'Tell us what you need',
       'form.security': 'To avoid spam, this form checks the phone, email and message before sending.',
-      'form.submit': 'Send Quote Request',
+      'form.submit': 'Send Quote Request', 'form.sending': 'Sending...', 'form.submitError': 'We could not send your request right now. Please try again or contact us directly by phone, WhatsApp or email.',
       'thank.title': 'Thank you.', 'thank.text': 'Your request was sent successfully.', 'thank.back': 'Back to Unik Naples',
       'footer.text': 'Professional Cleaning Services in Naples, Florida.',
       'footer.copy': '© 2026 Unik Naples. All rights reserved.',
@@ -68,7 +68,7 @@
       'form.phone': 'Teléfono', 'form.email': 'Correo electrónico', 'form.emailPlaceholder': 'nombre@email.com',
       'form.service': 'Servicio necesario', 'form.message': 'Mensaje', 'form.messagePlaceholder': 'Cuéntenos lo que necesita',
       'form.security': 'Para evitar spam, este formulario verifica el teléfono, el correo electrónico y el mensaje antes de enviar.',
-      'form.submit': 'Enviar solicitud',
+      'form.submit': 'Enviar solicitud', 'form.sending': 'Enviando...', 'form.submitError': 'No pudimos enviar su solicitud en este momento. Inténtelo nuevamente o contáctenos directamente por teléfono, WhatsApp o correo electrónico.',
       'thank.title': 'Gracias.', 'thank.text': 'Su solicitud fue enviada correctamente.', 'thank.back': 'Volver a Unik Naples',
       'footer.text': 'Servicios profesionales de limpieza en Naples, Florida.',
       'footer.copy': '© 2026 Unik Naples. Todos los derechos reservados.',
@@ -107,7 +107,7 @@
       'form.phone': 'Telefone', 'form.email': 'E-mail', 'form.emailPlaceholder': 'nome@email.com',
       'form.service': 'Serviço necessário', 'form.message': 'Mensagem', 'form.messagePlaceholder': 'Conte o que você precisa',
       'form.security': 'Para evitar spam, este formulário verifica telefone, e-mail e mensagem antes do envio.',
-      'form.submit': 'Enviar solicitação',
+      'form.submit': 'Enviar solicitação', 'form.sending': 'Enviando...', 'form.submitError': 'Não conseguimos enviar sua solicitação agora. Tente novamente ou entre em contato diretamente por telefone, WhatsApp ou e-mail.',
       'thank.title': 'Obrigado.', 'thank.text': 'Sua solicitação foi enviada com sucesso.', 'thank.back': 'Voltar para Unik Naples',
       'footer.text': 'Serviços profissionais de limpeza em Naples, Florida.',
       'footer.copy': '© 2026 Unik Naples. Todos os direitos reservados.',
@@ -220,14 +220,55 @@
 
   Object.values(fields).forEach((field) => field.addEventListener('blur', validateForm));
 
-  form.addEventListener('submit', function (event) {
+  const submitButton = form.querySelector('button[type="submit"]');
+  const thankYouPanel = document.querySelector('#thank-you');
+
+  function showSuccessMessage() {
+    if (!thankYouPanel) return;
+    thankYouPanel.style.display = 'block';
+    thankYouPanel.setAttribute('tabindex', '-1');
+    thankYouPanel.focus({ preventScroll: true });
+    thankYouPanel.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  }
+
+  function setSubmitting(isSubmitting) {
+    if (!submitButton) return;
+    submitButton.disabled = isSubmitting;
+    submitButton.textContent = isSubmitting ? t('form.sending') : t('form.submit');
+    submitButton.setAttribute('aria-busy', isSubmitting ? 'true' : 'false');
+  }
+
+  form.addEventListener('submit', async function (event) {
+    event.preventDefault();
+
     if (!validateForm()) {
-      event.preventDefault();
       return;
     }
+
     let digits = digitsOnly(fields.phone.value);
     if (digits.length === 10) fields.phone.value = `+1${digits}`;
-    localStorage.setItem('unikLastSubmit', String(Date.now()));
+
+    setSubmitting(true);
+
+    try {
+      const response = await fetch(form.action, {
+        method: 'POST',
+        body: new FormData(form),
+        headers: { 'Accept': 'application/json' }
+      });
+
+      if (!response.ok) {
+        throw new Error('Form submission failed');
+      }
+
+      localStorage.setItem('unikLastSubmit', String(Date.now()));
+      form.reset();
+      showSuccessMessage();
+    } catch (error) {
+      alert(t('form.submitError'));
+    } finally {
+      setSubmitting(false);
+    }
   });
 
   setLanguage(currentLang);

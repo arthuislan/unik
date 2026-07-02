@@ -2,7 +2,7 @@
 
 Official static website for Unik Naples.
 
-Current version: **v1.0.0**
+Current version: **v1.0.1**
 
 Deploy target: **Cloudflare Pages**
 

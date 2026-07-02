@@ -1,5 +1,11 @@
 # Changelog
 
+## v1.0.1 — Form feedback fix
+- Fixed the contact form behavior after submission.
+- Added a visible success confirmation inside the page.
+- Added a temporary sending state to the submit button.
+- No layout, spacing, color, typography, or design changes were made.
+
 ## v1.0.0 — Approved refined layout
 
 - Approved quote section layout.

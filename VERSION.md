@@ -1,16 +1,9 @@
-# Unik Naples Website
+# Unik Naples Version
 
-Current version: **v1.0.0**
+Current version: **v1.0.1**
 
-Status: Approved refined layout.
-
-## Version rules
-
-- **v1.0.0** = approved visual baseline.
-- **v1.0.1** = small fixes that do not change the approved design.
-- **v1.1.0** = new feature or visible improvement.
-- **v2.0.0** = major redesign or structural rebuild.
-
-## Protected design rule
-
-Do not change the approved layout unless the change request specifically asks for visual/design modification.
+## v1.0.1
+- Fixed contact form submission feedback.
+- Added in-page success confirmation after a successful quote request.
+- Added button loading state during form submission.
+- Preserved the approved v1.0.0 layout and visual design.
