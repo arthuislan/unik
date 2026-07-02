@@ -10,9 +10,9 @@
   <meta property="og:title" content="Unik Naples | Professional Cleaning Services" />
   <meta property="og:description" content="Professional, reliable and detail-oriented cleaning services in Naples, Florida." />
   <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://www.uniknaples.com" />
-  <meta property="og:image" content="https://www.uniknaples.com/assets/images/unik-logo-transparent.png" />
-  <link rel="canonical" href="https://www.uniknaples.com" />
+  <meta property="og:url" content="https://uniknaples.com" />
+  <meta property="og:image" content="https://uniknaples.com/assets/images/unik-logo-transparent.png" />
+  <link rel="canonical" href="https://uniknaples.com" />
   <link rel="icon" href="assets/images/favicon.png" />
   <link rel="stylesheet" href="assets/css/style.css" />
 </head>
@@ -24,47 +24,52 @@
         <span>Naples, Florida</span>
       </a>
       <nav class="links" aria-label="Main navigation">
-        <a href="#services">Services</a>
-        <a href="#about">About</a>
-        <a href="#contact">Contact</a>
+        <a href="#services" data-i18n="nav.services">Services</a>
+        <a href="#about" data-i18n="nav.about">About</a>
+        <a href="#contact" data-i18n="nav.contact">Contact</a>
       </nav>
-      <a class="btn" href="#contact">Request a Quote</a>
+      <div class="language-switcher" aria-label="Language selector">
+        <button type="button" data-lang="en" class="active">EN</button>
+        <button type="button" data-lang="es">ES</button>
+        <button type="button" data-lang="pt">PT-BR</button>
+      </div>
+      <a class="btn" href="#contact" data-i18n="cta.quote">Request a Quote</a>
     </div>
   </header>
 
   <main id="home">
     <div class="container hero">
       <div>
-        <span class="badge">Professional Cleaning Services</span>
-        <h1>Clean spaces with a refined touch.</h1>
-        <p>Unik Naples provides reliable, detail-oriented cleaning services in Naples, Florida, with care, discretion and professionalism.</p>
+        <span class="badge" data-i18n="hero.badge">Professional Cleaning Services</span>
+        <h1 data-i18n="hero.title">Clean spaces with a refined touch.</h1>
+        <p data-i18n="hero.text">Unik Naples provides reliable, detail-oriented cleaning services in Naples, Florida, with care, discretion and professionalism.</p>
         <div class="actions">
-          <a class="btn" href="#contact">Request a Quote</a>
-          <a class="btn secondary" href="tel:+19412643819">Call Now</a>
+          <a class="btn" href="#contact" data-i18n="cta.quote">Request a Quote</a>
+          <a class="btn secondary" href="tel:+19412643819" data-i18n="cta.call">Call Now</a>
         </div>
       </div>
       <aside class="hero-card" aria-label="Contact information">
         <img src="assets/images/unik-logo.svg" alt="Unik Naples original logo" />
-        <div class="contact-line"><strong>Contact</strong>Lucia Castilho</div>
-        <div class="contact-line"><strong>Phone / WhatsApp</strong><a href="tel:+19412643819">+1 (941) 264-3819</a></div>
-        <div class="contact-line"><strong>Email</strong><a href="mailto:contact@uniknaples.com">contact@uniknaples.com</a></div>
-        <div class="lux-note">For faster service, send your name, preferred contact method and the type of cleaning you need.</div>
+        <div class="contact-line"><strong data-i18n="contact.contact">Contact</strong><span>Lucia Castilho</span></div>
+        <div class="contact-line"><strong data-i18n="contact.phone">Phone / WhatsApp</strong><a href="tel:+19412643819">+1 (941) 264-3819</a></div>
+        <div class="contact-line"><strong data-i18n="contact.email">Email</strong><a href="mailto:contact@uniknaples.com">contact@uniknaples.com</a></div>
+        <div class="lux-note" data-i18n="hero.note">For faster service, send your name, preferred contact method and the type of cleaning you need.</div>
       </aside>
     </div>
 
     <section id="services">
       <div class="container">
         <div class="section-title">
-          <h2>Cleaning services for homes and spaces that deserve care.</h2>
-          <p>Choose the service you need today. Details can be adjusted according to your space and schedule.</p>
+          <h2 data-i18n="services.title">Cleaning services for homes and spaces that deserve care.</h2>
+          <p data-i18n="services.text">Choose the service you need today. Details can be adjusted according to your space and schedule.</p>
         </div>
         <div class="grid">
-          <div class="card"><h3>House Cleaning</h3><p>Regular cleaning for homes, apartments and private spaces.</p></div>
-          <div class="card"><h3>Deep Cleaning</h3><p>A more detailed cleaning for areas that need extra attention.</p></div>
-          <div class="card"><h3>Move In / Move Out</h3><p>Cleaning support before moving in or after moving out.</p></div>
-          <div class="card"><h3>Vacation Rental Cleaning</h3><p>Cleaning preparation for short-term rental properties.</p></div>
-          <div class="card"><h3>Office Cleaning</h3><p>Professional cleaning for small offices and workspaces.</p></div>
-          <div class="card"><h3>Custom Cleaning</h3><p>Tell us what you need and we will prepare a personalized quote.</p></div>
+          <div class="card"><h3 data-i18n="service.house.title">House Cleaning</h3><p data-i18n="service.house.text">Regular cleaning for homes, apartments and private spaces.</p></div>
+          <div class="card"><h3 data-i18n="service.deep.title">Deep Cleaning</h3><p data-i18n="service.deep.text">A more detailed cleaning for areas that need extra attention.</p></div>
+          <div class="card"><h3 data-i18n="service.move.title">Move In / Move Out</h3><p data-i18n="service.move.text">Cleaning support before moving in or after moving out.</p></div>
+          <div class="card"><h3 data-i18n="service.vacation.title">Vacation Rental Cleaning</h3><p data-i18n="service.vacation.text">Cleaning preparation for short-term rental properties.</p></div>
+          <div class="card"><h3 data-i18n="service.office.title">Office Cleaning</h3><p data-i18n="service.office.text">Professional cleaning for small offices and workspaces.</p></div>
+          <div class="card"><h3 data-i18n="service.custom.title">Custom Cleaning</h3><p data-i18n="service.custom.text">Tell us what you need and we will prepare a personalized quote.</p></div>
         </div>
       </div>
     </section>
@@ -72,14 +77,14 @@
     <section id="about">
       <div class="container split">
         <div class="panel">
-          <h2>Why choose Unik?</h2>
-          <p>Because every space has its own rhythm, details and needs. Unik Naples works with attention, respect and consistency to deliver a clean, comfortable and welcoming environment.</p>
+          <h2 data-i18n="about.title">Why choose Unik?</h2>
+          <p data-i18n="about.text">Because every space has its own rhythm, details and needs. Unik Naples works with attention, respect and consistency to deliver a clean, comfortable and welcoming environment.</p>
         </div>
         <div class="grid" style="grid-template-columns: 1fr 1fr;">
-          <div class="card"><h3>Reliable</h3><p>Clear communication and commitment to scheduled service.</p></div>
-          <div class="card"><h3>Detail-Oriented</h3><p>Careful attention to the areas that make a real difference.</p></div>
-          <div class="card"><h3>Local</h3><p>Serving Naples, Florida.</p></div>
-          <div class="card"><h3>Professional</h3><p>Respectful service for your home, office or rental property.</p></div>
+          <div class="card"><h3 data-i18n="about.reliable.title">Reliable</h3><p data-i18n="about.reliable.text">Clear communication and commitment to scheduled service.</p></div>
+          <div class="card"><h3 data-i18n="about.detail.title">Detail-Oriented</h3><p data-i18n="about.detail.text">Careful attention to the areas that make a real difference.</p></div>
+          <div class="card"><h3 data-i18n="about.local.title">Local</h3><p data-i18n="about.local.text">Serving Naples, Florida.</p></div>
+          <div class="card"><h3 data-i18n="about.professional.title">Professional</h3><p data-i18n="about.professional.text">Respectful service for your home, office or rental property.</p></div>
         </div>
       </div>
     </section>
@@ -88,46 +93,57 @@
       <div class="container split">
         <div class="quote-intro">
           <div>
-            <span class="badge">Fast response in Naples</span>
-            <h2>Request a quote today.</h2>
-            <p>Tell us what you need and Unik Naples will contact you with care, clarity and attention to detail.</p>
+            <span class="badge quote-badge" data-i18n="quote.badge">Fast response in Naples</span>
+            <h2 data-i18n="quote.title">Request a quote today.</h2>
+            <p data-i18n="quote.text">Tell us what you need and Unik Naples will contact you with care, clarity and attention to detail.</p>
             <div class="quote-contact">
               <p><strong>Lucia Castilho</strong><br>
               <a href="tel:+19412643819">+1 (941) 264-3819</a><br>
               <a href="mailto:contact@uniknaples.com">contact@uniknaples.com</a></p>
             </div>
           </div>
-          <div class="quote-note">Prefer direct contact? Use the floating buttons at the bottom of the page.</div>
+          <div class="quote-note" data-i18n="quote.note">Prefer direct contact? Use the floating buttons at the bottom of the page.</div>
         </div>
-        <form action="https://formsubmit.co/contact@uniknaples.com" method="POST">
+        <form id="quote-form" action="https://formsubmit.co/contact@uniknaples.com" method="POST" novalidate>
           <input type="hidden" name="_subject" value="New quote request from Unik Naples website">
           <input type="hidden" name="_captcha" value="false">
           <input type="hidden" name="_template" value="table">
+          <input type="hidden" name="_next" value="https://uniknaples.com/#thank-you">
+          <input type="text" name="_honey" class="honeypot" tabindex="-1" autocomplete="off" aria-hidden="true">
           <div class="form-row">
             <div class="form-field">
-              <label for="name">Name</label>
-              <input id="name" name="name" type="text" placeholder="Your name" required>
+              <label for="name" data-i18n="form.name">Name</label>
+              <input id="name" name="name" type="text" placeholder="Your name" data-i18n-placeholder="form.namePlaceholder" minlength="2" maxlength="70" autocomplete="name" required>
+              <small class="field-error" id="name-error"></small>
             </div>
             <div class="form-field">
-              <label for="phone">Phone</label>
-              <input id="phone" name="phone" type="tel" placeholder="Your phone number" required>
+              <label for="phone" data-i18n="form.phone">Phone</label>
+              <input id="phone" name="phone" type="tel" placeholder="(941) 264-3819" inputmode="tel" autocomplete="tel" required>
+              <small class="field-error" id="phone-error"></small>
             </div>
           </div>
-          <label for="email">Email</label>
-          <input id="email" name="email" type="email" placeholder="Your email">
-          <label for="service">Service Needed</label>
-          <select id="service" name="service">
-            <option>House Cleaning</option>
-            <option>Deep Cleaning</option>
-            <option>Move In / Move Out</option>
-            <option>Vacation Rental Cleaning</option>
-            <option>Office Cleaning</option>
-            <option>Custom Cleaning</option>
+          <label for="email" data-i18n="form.email">Email</label>
+          <input id="email" name="email" type="email" placeholder="name@email.com" data-i18n-placeholder="form.emailPlaceholder" autocomplete="email" maxlength="120" required>
+          <small class="field-error" id="email-error"></small>
+          <label for="service" data-i18n="form.service">Service Needed</label>
+          <select id="service" name="service" required>
+            <option data-i18n="service.house.title">House Cleaning</option>
+            <option data-i18n="service.deep.title">Deep Cleaning</option>
+            <option data-i18n="service.move.title">Move In / Move Out</option>
+            <option data-i18n="service.vacation.title">Vacation Rental Cleaning</option>
+            <option data-i18n="service.office.title">Office Cleaning</option>
+            <option data-i18n="service.custom.title">Custom Cleaning</option>
           </select>
-          <label for="message">Message</label>
-          <textarea id="message" name="message" placeholder="Tell us what you need"></textarea>
-          <button class="btn submit" type="submit">Send Quote Request</button>
+          <label for="message" data-i18n="form.message">Message</label>
+          <textarea id="message" name="message" placeholder="Tell us what you need" data-i18n-placeholder="form.messagePlaceholder" minlength="12" maxlength="1000" required></textarea>
+          <small class="field-error" id="message-error"></small>
+          <p class="form-security-note" data-i18n="form.security">To avoid spam, this form checks the phone, email and message before sending.</p>
+          <button class="btn submit" type="submit" data-i18n="form.submit">Send Quote Request</button>
         </form>
+        <div id="thank-you" class="thank-you-panel" aria-live="polite">
+          <strong data-i18n="thank.title">Thank you.</strong> <span data-i18n="thank.text">Your request was sent successfully.</span>
+          <a href="https://uniknaples.com/" data-i18n="thank.back">Back to Unik Naples</a>
+        </div>
       </div>
     </section>
   </main>
@@ -136,9 +152,9 @@
     <div class="container footer-inner">
       <div>
         <img src="assets/images/unik-logo-footer.png" alt="Unik Naples logo" />
-        <p>Professional Cleaning Services in Naples, Florida.</p>
+        <p data-i18n="footer.text">Professional Cleaning Services in Naples, Florida.</p>
       </div>
-      <p>© 2026 Unik Naples. All rights reserved.</p>
+      <p data-i18n="footer.copy">© 2026 Unik Naples. All rights reserved.</p>
     </div>
   </footer>
 
@@ -163,5 +179,6 @@
       </svg>
     </a>
   </div>
+  <script src="assets/js/script.js"></script>
 </body>
 </html>
