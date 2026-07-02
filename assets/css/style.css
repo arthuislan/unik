@@ -385,3 +385,120 @@
     transform: translateY(-6px);
   }
 }
+
+/* Contact section refinement: compact premium spacing */
+#contact .split {
+  align-items: start;
+  gap: 38px;
+}
+.quote-intro {
+  min-height: auto;
+  justify-content: flex-start;
+  gap: 26px;
+  padding: 42px 38px;
+}
+.quote-intro > div:first-child {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.quote-intro .quote-badge {
+  margin-bottom: 34px;
+  transform: none;
+}
+.quote-intro h2 {
+  margin-bottom: 22px;
+}
+.quote-intro p {
+  margin-bottom: 28px;
+}
+.quote-contact {
+  width: 100%;
+  margin: 0;
+  padding: 22px 24px;
+}
+.quote-note {
+  margin-top: 0;
+  width: 100%;
+}
+@media (max-width: 840px) {
+  #contact .split {
+    gap: 24px;
+  }
+  .quote-intro {
+    padding: 30px 26px;
+    gap: 22px;
+  }
+  .quote-intro .quote-badge {
+    margin-bottom: 24px;
+    transform: none;
+  }
+  .quote-intro h2 {
+    margin-bottom: 16px;
+  }
+  .quote-intro p {
+    margin-bottom: 22px;
+  }
+}
+
+
+/* Final contact form cleanup */
+#quote-form > input[type="hidden"] {
+  display: none !important;
+}
+#quote-form input[name="_honey"],
+#quote-form .honeypot,
+#quote-form .honeypot-wrap {
+  display: none !important;
+  visibility: hidden !important;
+  position: absolute !important;
+  left: -10000px !important;
+  top: auto !important;
+  width: 1px !important;
+  height: 1px !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  border: 0 !important;
+  overflow: hidden !important;
+}
+#contact form {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+#contact form > label,
+#contact form .form-field label {
+  margin-top: 2px;
+}
+#contact form input,
+#contact form select,
+#contact form textarea {
+  margin-bottom: 14px;
+}
+#contact form .field-error {
+  margin-top: -8px;
+}
+#contact .split {
+  align-items: start;
+}
+.quote-intro {
+  align-self: start;
+}
+.quote-intro .quote-badge {
+  margin-bottom: 36px;
+}
+.float-dock {
+  bottom: 26px;
+}
+@media (max-width: 840px) {
+  #contact form input,
+  #contact form select,
+  #contact form textarea {
+    margin-bottom: 13px;
+  }
+  .float-dock {
+    bottom: 24px;
+  }
+}
