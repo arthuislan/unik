@@ -30,6 +30,7 @@
       'form.service': 'Service Needed', 'form.message': 'Message', 'form.messagePlaceholder': 'Tell us what you need',
       'form.security': 'To avoid spam, this form checks the phone, email and message before sending.',
       'form.submit': 'Send Quote Request',
+      'form.sending': 'Sending...', 'form.sent': 'Your request was sent successfully. We will contact you soon.', 'form.failed': 'We could not send the request. Please call or text us directly.',
       'thank.title': 'Thank you.', 'thank.text': 'Your request was sent successfully.', 'thank.back': 'Back to Unik Naples',
       'footer.text': 'Professional Cleaning Services in Naples, Florida.',
       'footer.copy': '© 2026 Unik Naples. All rights reserved.',
@@ -69,6 +70,7 @@
       'form.service': 'Servicio necesario', 'form.message': 'Mensaje', 'form.messagePlaceholder': 'Cuéntenos lo que necesita',
       'form.security': 'Para evitar spam, este formulario verifica el teléfono, el correo electrónico y el mensaje antes de enviar.',
       'form.submit': 'Enviar solicitud',
+      'form.sending': 'Enviando...', 'form.sent': 'Su solicitud fue enviada correctamente. Nos comunicaremos pronto.', 'form.failed': 'No pudimos enviar la solicitud. Llámenos o envíenos un mensaje directamente.',
       'thank.title': 'Gracias.', 'thank.text': 'Su solicitud fue enviada correctamente.', 'thank.back': 'Volver a Unik Naples',
       'footer.text': 'Servicios profesionales de limpieza en Naples, Florida.',
       'footer.copy': '© 2026 Unik Naples. Todos los derechos reservados.',
@@ -108,6 +110,7 @@
       'form.service': 'Serviço necessário', 'form.message': 'Mensagem', 'form.messagePlaceholder': 'Conte o que você precisa',
       'form.security': 'Para evitar spam, este formulário verifica telefone, e-mail e mensagem antes do envio.',
       'form.submit': 'Enviar solicitação',
+      'form.sending': 'Enviando...', 'form.sent': 'Sua solicitação foi enviada com sucesso. Entraremos em contato em breve.', 'form.failed': 'Não foi possível enviar a solicitação. Ligue ou envie uma mensagem diretamente.',
       'thank.title': 'Obrigado.', 'thank.text': 'Sua solicitação foi enviada com sucesso.', 'thank.back': 'Voltar para Unik Naples',
       'footer.text': 'Serviços profissionais de limpeza em Naples, Florida.',
       'footer.copy': '© 2026 Unik Naples. Todos os direitos reservados.',
@@ -220,14 +223,61 @@
 
   Object.values(fields).forEach((field) => field.addEventListener('blur', validateForm));
 
-  form.addEventListener('submit', function (event) {
+  const submitButton = form.querySelector('button[type="submit"]');
+  const thankPanel = document.querySelector('#thank-you');
+
+  function showFormStatus(type, message) {
+    if (!thankPanel) return;
+    thankPanel.classList.remove('success', 'error');
+    thankPanel.classList.add(type === 'error' ? 'error' : 'success');
+    thankPanel.innerHTML = type === 'error'
+      ? `<strong>${message}</strong>`
+      : `<strong>${t('thank.title')}</strong> <span>${message}</span>`;
+    thankPanel.hidden = false;
+    thankPanel.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  }
+
+  form.addEventListener('submit', async function (event) {
+    event.preventDefault();
+
     if (!validateForm()) {
-      event.preventDefault();
       return;
     }
+
+    const originalButtonText = submitButton ? submitButton.textContent : '';
+    if (submitButton) {
+      submitButton.disabled = true;
+      submitButton.textContent = t('form.sending');
+    }
+
+    const originalPhone = fields.phone.value;
     let digits = digitsOnly(fields.phone.value);
     if (digits.length === 10) fields.phone.value = `+1${digits}`;
-    localStorage.setItem('unikLastSubmit', String(Date.now()));
+
+    try {
+      const response = await fetch(form.action, {
+        method: 'POST',
+        body: new FormData(form),
+        headers: { 'Accept': 'application/json' }
+      });
+
+      if (!response.ok) {
+        throw new Error('Form submission failed');
+      }
+
+      localStorage.setItem('unikLastSubmit', String(Date.now()));
+      form.reset();
+      fields.phone.value = '';
+      showFormStatus('success', t('form.sent'));
+    } catch (error) {
+      fields.phone.value = originalPhone;
+      showFormStatus('error', t('form.failed'));
+    } finally {
+      if (submitButton) {
+        submitButton.disabled = false;
+        submitButton.textContent = originalButtonText || t('form.submit');
+      }
+    }
   });
 
   setLanguage(currentLang);
