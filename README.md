@@ -21,3 +21,6 @@ Build output directory: `/` or `.` depending on Cloudflare interface
 ## Versioning
 
 See `VERSION.md` and `CHANGELOG.md`.
+
+
+Current version: v1.0.2 — LLC Name Update

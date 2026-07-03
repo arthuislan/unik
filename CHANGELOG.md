@@ -1,19 +1,21 @@
 # Changelog
 
-## v1.0.1 — Form feedback fix
-- Fixed the contact form behavior after submission.
-- Added a visible success confirmation inside the page.
-- Added a temporary sending state to the submit button.
-- No layout, spacing, color, typography, or design changes were made.
+## v1.0.2 — LLC Name Update
 
-## v1.0.0 — Approved refined layout
+- Replaced “Professional Cleaning Services” with “UNIK CLEANING PERSONAL CARE AND ORGANIZATION LLC.”
+- Updated page title, Open Graph title, visible badge text, footer translation string and related translation text only where the old phrase appeared.
+- No layout, spacing, CSS, JavaScript behavior, form logic, image, icon, route or configuration structure was changed.
 
-- Approved quote section layout.
-- Refined contact panel spacing.
-- Multilingual support included.
-- Floating contact buttons included.
-- Cloudflare Pages-ready structure.
+## v1.0.1 — Form Feedback Fix
 
-## Next versions
+- Added form submission feedback.
+- Added success confirmation after sending.
+- Added temporary sending state on the submit button.
+- No visual layout changes.
 
-- v1.0.1 will be used for small corrections, such as form behavior, without changing the approved layout.
+## v1.0.0 — Approved Refined Version
+
+- Approved refined layout.
+- Quote panel refined.
+- Multilingual support.
+- Form validation baseline.

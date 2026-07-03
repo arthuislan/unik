@@ -3,7 +3,7 @@
     en: {
       'nav.services': 'Services', 'nav.about': 'About', 'nav.contact': 'Contact',
       'cta.quote': 'Request a Quote', 'cta.call': 'Call Now',
-      'hero.badge': 'Professional Cleaning Services',
+      'hero.badge': 'UNIK CLEANING PERSONAL CARE AND ORGANIZATION LLC.',
       'hero.title': 'Clean spaces with a refined touch.',
       'hero.text': 'Unik Naples provides reliable, detail-oriented cleaning services in Naples, Florida, with care, discretion and professionalism.',
       'hero.note': 'For faster service, send your name, preferred contact method and the type of cleaning you need.',
@@ -31,7 +31,7 @@
       'form.security': 'To avoid spam, this form checks the phone, email and message before sending.',
       'form.submit': 'Send Quote Request', 'form.sending': 'Sending...', 'form.submitError': 'We could not send your request right now. Please try again or contact us directly by phone, WhatsApp or email.',
       'thank.title': 'Thank you.', 'thank.text': 'Your request was sent successfully.', 'thank.back': 'Back to Unik Naples',
-      'footer.text': 'Professional Cleaning Services in Naples, Florida.',
+      'footer.text': 'UNIK CLEANING PERSONAL CARE AND ORGANIZATION LLC. in Naples, Florida.',
       'footer.copy': '© 2026 Unik Naples. All rights reserved.',
       'error.name': 'Please enter a real name with at least 2 letters.',
       'error.phone': 'Please enter a valid U.S. phone number with 10 digits.',
