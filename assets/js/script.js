@@ -148,6 +148,26 @@
     button.addEventListener('click', () => setLanguage(button.getAttribute('data-lang')));
   });
 
+
+  function getHeaderOffset() {
+    const header = document.querySelector('header');
+    return header ? Math.ceil(header.getBoundingClientRect().height + 24) : 96;
+  }
+
+  document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+    anchor.addEventListener('click', (event) => {
+      const href = anchor.getAttribute('href');
+      if (!href || href === '#') return;
+      const target = document.querySelector(href);
+      if (!target) return;
+
+      event.preventDefault();
+      const targetTop = target.getBoundingClientRect().top + window.pageYOffset - getHeaderOffset();
+      window.scrollTo({ top: Math.max(0, targetTop), behavior: 'smooth' });
+      history.pushState(null, '', href);
+    });
+  });
+
   const form = document.querySelector('#quote-form');
   if (!form) {
     setLanguage(currentLang);
@@ -230,6 +250,7 @@
   const feedbackText = document.querySelector('#form-feedback-text');
   let activeRequestController = null;
   let pendingSubmitTimer = null;
+  let pendingCountdownInterval = null;
   const PRE_SEND_DELAY_MS = 20000;
 
   function showFeedback(type, title, text) {
@@ -269,10 +290,26 @@
     }
   }
 
+  function getCountdownText(seconds) {
+    const safeSeconds = Math.max(0, Number(seconds) || 0);
+    if (currentLang === 'es') return `Enviaremos la solicitud en ${safeSeconds} segundos.`;
+    if (currentLang === 'pt') return `Enviaremos a solicitação em ${safeSeconds} segundos.`;
+    return `We will send the request in ${safeSeconds} seconds.`;
+  }
+
+  function updateProcessingMessage(seconds) {
+    if (!feedbackText) return;
+    feedbackText.textContent = `${t('form.processingText')} ${getCountdownText(seconds)}`;
+  }
+
   function clearPendingSubmit() {
     if (pendingSubmitTimer) {
       clearTimeout(pendingSubmitTimer);
       pendingSubmitTimer = null;
+    }
+    if (pendingCountdownInterval) {
+      clearInterval(pendingCountdownInterval);
+      pendingCountdownInterval = null;
     }
   }
 
@@ -283,8 +320,17 @@
         return;
       }
 
+      const startedAt = Date.now();
+      updateProcessingMessage(Math.ceil(PRE_SEND_DELAY_MS / 1000));
+
+      pendingCountdownInterval = setInterval(() => {
+        const elapsed = Date.now() - startedAt;
+        const remaining = Math.max(0, Math.ceil((PRE_SEND_DELAY_MS - elapsed) / 1000));
+        updateProcessingMessage(remaining);
+      }, 250);
+
       pendingSubmitTimer = setTimeout(() => {
-        pendingSubmitTimer = null;
+        clearPendingSubmit();
         resolve();
       }, PRE_SEND_DELAY_MS);
 
@@ -317,7 +363,7 @@
 
     activeRequestController = new AbortController();
     setSubmitting(true);
-    showFeedback('processing', t('form.processingTitle'), t('form.processingText'));
+    showFeedback('processing', t('form.processingTitle'), `${t('form.processingText')} ${getCountdownText(20)}`);
 
     try {
       await delayBeforeSending(activeRequestController.signal);

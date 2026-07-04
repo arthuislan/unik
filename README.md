@@ -1,45 +1,41 @@
 # Unik Naples Website
 
-Official website for **UNIK Cleaning Personal Care and Organization LLC.**
+Official website for **UNIK CLEANING PERSONAL CARE AND ORGANIZATION LLC.**
 
 ## Current version
 
-**v1.0.5 — Premium Form Experience**
+**v1.0.6 — Form Countdown and Navigation Alignment Fix**
 
-## Release summary
+## v1.0.6 Summary
 
-This version improves the quote form feedback flow while preserving the approved layout and visual identity.
+This release corrects two issues found after publishing v1.0.5:
 
-## v1.0.5 checklist
+1. The premium form experience was completing too quickly on the live site.
+2. Navigation links to Services, About and Contact were being hidden by the sticky header.
 
-- [x] Main layout preserved.
-- [x] Header preserved.
-- [x] Quote panel layout preserved.
-- [x] Floating buttons preserved.
-- [x] Favicon system preserved.
-- [x] 20-second pre-send preparation flow added.
-- [x] Premium white loading/progress effect added to submit button.
-- [x] Processing message appears above the submit button.
-- [x] `Cancel & Edit` allows the user to stop the pending send and preserve typed information.
-- [x] Success message appears above the submit button after successful submission.
-- [x] No return/home or request-another-quote buttons added.
-- [x] Documentation updated.
+## v1.0.6 Changes
 
-## Files changed in v1.0.5
+- Added a visible 20-second countdown during form preparation.
+- Confirmed the form request is delayed until the countdown finishes.
+- Kept `Cancel & Edit` available during the preparation window.
+- Added cache-busting to the CSS and JavaScript URLs.
+- Added sticky-header-aware anchor scrolling.
+- Added CSS scroll offset for direct anchor navigation.
 
+## Files changed
+
+- `index.html`
 - `assets/js/script.js`
 - `assets/css/style.css`
 - `README.md`
 - `CHANGELOG.md`
 - `VERSION.md`
 
-## Deployment
+## Integrity notes
 
-This project is deployed with GitHub and Cloudflare Pages.
-
-After replacing the files in the local repository:
-
-1. Review changes in GitHub Desktop.
-2. Commit to `main`.
-3. Push origin.
-4. Cloudflare Pages will deploy automatically.
+- Main layout preserved.
+- Header design preserved.
+- Quote panel design preserved.
+- Floating contact buttons preserved.
+- Favicon system preserved.
+- Images preserved.
