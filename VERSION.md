@@ -2,7 +2,7 @@
 
 ## Current Version
 
-**v1.0.2 — LLC Name Update**
+**v1.0.3 — Favicon Update**
 
 ## Change Type
 
@@ -10,18 +10,25 @@ Patch release.
 
 ## What changed
 
-- Replaced the public label and link preview text “Professional Cleaning Services” with “UNIK CLEANING PERSONAL CARE AND ORGANIZATION LLC.”
+- Replaced the website favicon with the new approved minimal Unik icon.
+- Added browser-ready favicon sizes for desktop and mobile compatibility.
+- Updated only the favicon references in the HTML head.
 
 ## What did not change
 
 - No layout changes.
 - No spacing changes.
-- No structure changes.
 - No CSS changes.
+- No JavaScript changes.
 - No form logic changes.
-- No image/icon changes.
+- No copy/text changes.
+- No structural content changes.
 
 ## Previous versions
+
+### v1.0.2 — LLC Name Update
+
+- Replaced the public label and link preview text “Professional Cleaning Services” with “UNIK CLEANING PERSONAL CARE AND ORGANIZATION LLC.”
 
 ### v1.0.1 — Form Feedback Fix
 

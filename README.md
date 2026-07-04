@@ -2,7 +2,7 @@
 
 Official static website for Unik Naples.
 
-Current version: **v1.0.1**
+Current version: **v1.0.3 — Favicon Update**
 
 Deploy target: **Cloudflare Pages**
 
@@ -21,6 +21,3 @@ Build output directory: `/` or `.` depending on Cloudflare interface
 ## Versioning
 
 See `VERSION.md` and `CHANGELOG.md`.
-
-
-Current version: v1.0.2 — LLC Name Update
