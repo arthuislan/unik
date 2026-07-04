@@ -43,6 +43,14 @@ function isValidUSPhone(value = '') {
   return digits.length === 10 && !/^(\d)\1{9}$/.test(digits) && /^[2-9]\d{2}/.test(digits) && /^\d{3}[2-9]\d{2}/.test(digits);
 }
 
+function getRequestId() {
+  try {
+    return crypto.randomUUID();
+  } catch (error) {
+    return `unik-${Date.now()}-${Math.random().toString(16).slice(2)}`;
+  }
+}
+
 function clientSubject(language) {
   if (language === 'pt') return 'Recebemos sua solicitação — UNIK Cleaning';
   if (language === 'es') return 'Recibimos su solicitud — UNIK Cleaning';
@@ -120,6 +128,7 @@ function clientHtmlEmail({ name, language }) {
 
 function internalHtmlEmail(data, meta) {
   const rows = [
+    ['Request ID', meta.requestId],
     ['Name', data.name],
     ['Phone', data.phone],
     ['Email', data.email],
@@ -144,7 +153,7 @@ function internalHtmlEmail(data, meta) {
 </body></html>`;
 }
 
-async function sendEmail(env, payload) {
+async function sendEmail(env, payload, label, requestId) {
   const response = await fetch(RESEND_ENDPOINT, {
     method: 'POST',
     headers: {
@@ -156,22 +165,63 @@ async function sendEmail(env, payload) {
 
   const result = await response.json().catch(() => ({}));
   if (!response.ok) {
-    console.error('Resend API error', result);
-    throw new Error(result.message || 'Resend request failed');
+    console.error('UNIK email delivery failed', {
+      requestId,
+      label,
+      status: response.status,
+      resendError: result
+    });
+    throw new Error(result.message || result.error || `${label} email failed`);
   }
+
+  console.log('UNIK email delivery succeeded', {
+    requestId,
+    label,
+    emailId: result.id || null
+  });
   return result;
 }
 
+function buildInternalEmail(cleanData, submittedAt, requestId) {
+  return {
+    from: `UNIK Website <${COMPANY_EMAIL}>`,
+    to: [COMPANY_EMAIL],
+    reply_to: cleanData.email,
+    subject: `New Quote Request — ${cleanData.name}`,
+    html: internalHtmlEmail(cleanData, { submittedAt, requestId }),
+    text: `New Quote Request\n\nRequest ID: ${requestId}\nName: ${cleanData.name}\nPhone: ${cleanData.phone}\nEmail: ${cleanData.email}\nService: ${cleanData.service}\nMessage: ${cleanData.message}\nSubmitted at: ${submittedAt}`
+  };
+}
+
+function buildClientEmail(cleanData) {
+  return {
+    from: `UNIK Cleaning <${COMPANY_EMAIL}>`,
+    to: [cleanData.email],
+    reply_to: COMPANY_EMAIL,
+    subject: clientSubject(cleanData.language),
+    html: clientHtmlEmail({ name: cleanData.name, language: cleanData.language }),
+    text: clientPlainText(cleanData.name, cleanData.language)
+  };
+}
+
 export async function onRequestPost({ request, env }) {
+  const requestId = getRequestId();
+  console.log('UNIK contact request received', {
+    requestId,
+    hasResendKey: Boolean(env.RESEND_API_KEY)
+  });
+
   if (!env.RESEND_API_KEY) {
-    return jsonResponse({ ok: false, error: 'Email service is not configured.' }, 500);
+    console.error('UNIK email service missing RESEND_API_KEY', { requestId });
+    return jsonResponse({ ok: false, error: 'Email service is not configured.', code: 'missing_resend_api_key', requestId }, 500);
   }
 
   let data;
   try {
     data = await request.json();
   } catch (error) {
-    return jsonResponse({ ok: false, error: 'Invalid request format.' }, 400);
+    console.error('UNIK invalid JSON payload', { requestId, message: error.message });
+    return jsonResponse({ ok: false, error: 'Invalid request format.', code: 'invalid_json', requestId }, 400);
   }
 
   const name = String(data.name || '').trim();
@@ -182,11 +232,14 @@ export async function onRequestPost({ request, env }) {
   const language = ['en', 'es', 'pt'].includes(data.language) ? data.language : 'en';
   const honey = String(data.honey || '').trim();
 
-  if (honey) return jsonResponse({ ok: true });
-  if (!isValidName(name)) return jsonResponse({ ok: false, error: 'Invalid name.' }, 400);
-  if (!isValidUSPhone(phone)) return jsonResponse({ ok: false, error: 'Invalid phone.' }, 400);
-  if (!isValidEmail(email)) return jsonResponse({ ok: false, error: 'Invalid email.' }, 400);
-  if (message.length < 12 || message.length > 1000) return jsonResponse({ ok: false, error: 'Invalid message.' }, 400);
+  if (honey) {
+    console.log('UNIK honeypot submission ignored', { requestId });
+    return jsonResponse({ ok: true, requestId, ignored: true });
+  }
+  if (!isValidName(name)) return jsonResponse({ ok: false, error: 'Invalid name.', code: 'invalid_name', requestId }, 400);
+  if (!isValidUSPhone(phone)) return jsonResponse({ ok: false, error: 'Invalid phone.', code: 'invalid_phone', requestId }, 400);
+  if (!isValidEmail(email)) return jsonResponse({ ok: false, error: 'Invalid email.', code: 'invalid_email', requestId }, 400);
+  if (message.length < 12 || message.length > 1000) return jsonResponse({ ok: false, error: 'Invalid message.', code: 'invalid_message', requestId }, 400);
 
   const cleanData = {
     name,
@@ -197,28 +250,39 @@ export async function onRequestPost({ request, env }) {
     language
   };
 
-  const submittedAt = new Date().toLocaleString('en-US', { timeZone: 'America/New_York', dateStyle: 'medium', timeStyle: 'short' });
+  const submittedAt = new Date().toLocaleString('en-US', {
+    timeZone: 'America/New_York',
+    dateStyle: 'medium',
+    timeStyle: 'short'
+  });
 
-  await Promise.all([
-    sendEmail(env, {
-      from: `UNIK Website <${COMPANY_EMAIL}>`,
-      to: [COMPANY_EMAIL],
-      reply_to: email,
-      subject: `New Quote Request — ${name}`,
-      html: internalHtmlEmail(cleanData, { submittedAt }),
-      text: `New Quote Request\n\nName: ${cleanData.name}\nPhone: ${cleanData.phone}\nEmail: ${cleanData.email}\nService: ${cleanData.service}\nMessage: ${cleanData.message}\nSubmitted at: ${submittedAt}`
-    }),
-    sendEmail(env, {
-      from: `UNIK Cleaning <${COMPANY_EMAIL}>`,
-      to: [email],
-      reply_to: COMPANY_EMAIL,
-      subject: clientSubject(language),
-      html: clientHtmlEmail({ name, language }),
-      text: clientPlainText(name, language)
-    })
-  ]);
+  let internalResult;
+  try {
+    internalResult = await sendEmail(env, buildInternalEmail(cleanData, submittedAt, requestId), 'internal', requestId);
+  } catch (error) {
+    console.error('UNIK internal notification failed', { requestId, message: error.message });
+    return jsonResponse({ ok: false, error: 'We could not deliver the request to UNIK right now.', code: 'internal_email_failed', requestId }, 502);
+  }
 
-  return jsonResponse({ ok: true });
+  let clientResult = null;
+  let clientEmailSent = false;
+  try {
+    clientResult = await sendEmail(env, buildClientEmail(cleanData), 'client', requestId);
+    clientEmailSent = true;
+  } catch (error) {
+    console.error('UNIK client auto-response failed, but internal notification was delivered', {
+      requestId,
+      message: error.message
+    });
+  }
+
+  return jsonResponse({
+    ok: true,
+    requestId,
+    internalEmailId: internalResult && internalResult.id ? internalResult.id : null,
+    clientEmailSent,
+    clientEmailId: clientResult && clientResult.id ? clientResult.id : null
+  });
 }
 
 export function onRequestOptions() {

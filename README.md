@@ -53,3 +53,18 @@ After uploading this version to GitHub, Cloudflare must redeploy the project so 
 ## Audit Confirmation
 
 v1.1.0 was built on top of the approved v1.0.10 package and preserves the approved visual layout.
+
+## v1.1.1 — Professional Email Pipeline
+
+This release improves the Resend + Cloudflare Pages Function email infrastructure.
+
+### What changed
+- Added request IDs and structured Cloudflare logs.
+- Replaced parallel email delivery with a safer sequential pipeline.
+- Internal UNIK notification is now the critical delivery step.
+- Customer confirmation email is sent independently after the internal notification.
+- If the customer auto-response fails, the quote request is still accepted as long as UNIK received the internal notification.
+
+### Deployment note
+Before approving production deployment, test this version in a Cloudflare Preview deployment and confirm that `RESEND_API_KEY` exists in the Preview environment.
+

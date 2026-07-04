@@ -1,5 +1,31 @@
 # Changelog
 
+## v1.1.1 — Professional Email Pipeline
+
+### Fixed
+- Reworked the email pipeline to avoid failing the full request when only the customer auto-response fails.
+- Added safer error handling around the Resend API integration.
+- Added request IDs to help match website submissions with Cloudflare Function logs.
+- Added structured logs for missing secrets, validation issues and Resend delivery failures.
+
+### Changed
+- Internal email delivery to UNIK now happens first and is the critical delivery step.
+- Customer auto-response is sent after the internal notification and is treated as secondary.
+- Updated cache-busting references to `v=1.1.1`.
+
+### Preserved
+- v1.0.10 premium 10-second form experience.
+- v1.0.10 Cancel & Edit visibility logic.
+- v1.0.8 desktop vertical floating contact buttons.
+- Main layout, CSS, header, hero, services, about, contact, favicons and thank-you page.
+
+### QA required
+- Test in Cloudflare Preview before merging to `main`.
+- Confirm `RESEND_API_KEY` exists for the Preview environment.
+- Confirm one internal email arrives at `contact@uniknaples.com`.
+- Confirm the customer receives the branded confirmation email.
+
+
 ## v1.1.0 — Professional Email Infrastructure
 
 ### Added
