@@ -1,5 +1,33 @@
 # Changelog
 
+## v1.0.4 — Inline Form Feedback Upgrade
+
+### Changed
+
+- Replaced the form completion experience with an inline success confirmation above the submit button.
+- Added a white loading spinner and subtle button sheen animation during submission.
+- Added a temporary “Cancel and edit” action while the request is being sent.
+- Added multilingual success, error and cancelled feedback messages.
+- Preserved the approved main layout and the v1.0.3 favicon system.
+
+### Files changed
+
+- `index.html`
+- `assets/js/script.js`
+- `assets/css/style.css`
+- `README.md`
+- `CHANGELOG.md`
+- `VERSION.md`
+
+### Not changed
+
+- No header redesign.
+- No quote panel redesign.
+- No service section change.
+- No footer change.
+- No floating button change.
+- No favicon change.
+
 ## v1.0.3 — Professional Thank-You Page and Favicon Update
 
 ### Changed

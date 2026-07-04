@@ -2,39 +2,39 @@
 
 ## Current Version
 
-**v1.0.3 — Professional Thank-You Page and Favicon Update**
+**v1.0.4 — Inline Form Feedback Upgrade**
 
 ## Release Type
 
-Minor patch release.
+Patch release.
 
 ## Scope
 
-This release updates the form completion flow and the favicon identity assets only.
+This release improves only the quote form submission experience on the existing approved layout.
 
 ## Files intentionally changed
 
 - `index.html`
 - `assets/js/script.js`
-- `thank-you.html`
-- `favicon.ico`
-- `assets/images/favicon.png`
-- `assets/images/favicon-16x16.png`
-- `assets/images/favicon-32x32.png`
-- `assets/images/apple-touch-icon.png`
-- `assets/images/android-chrome-192x192.png`
-- `assets/images/android-chrome-512x512.png`
-- `site.webmanifest`
-- `.gitignore`
+- `assets/css/style.css`
 - `README.md`
 - `CHANGELOG.md`
 - `VERSION.md`
 
 ## Protected areas
 
-- Main page layout preserved.
-- CSS preserved.
-- Service sections preserved.
 - Header preserved.
-- Contact information preserved.
+- Quote panel visual structure preserved.
+- Services section preserved.
+- About section preserved.
+- Footer preserved.
 - Floating contact buttons preserved.
+- Favicon system preserved from v1.0.3.
+
+## Functional behavior
+
+- The form no longer redirects after a successful AJAX submission.
+- The submit button shows a white loading spinner and moving sheen effect.
+- A temporary cancel/edit button appears while the request is being sent.
+- A professional success message appears above the submit button after the request is delivered.
+- Error and cancelled states display inside the same feedback area.

@@ -143,12 +143,15 @@
           <textarea id="message" name="message" placeholder="Tell us what you need" data-i18n-placeholder="form.messagePlaceholder" minlength="12" maxlength="1000" required></textarea>
           <small class="field-error" id="message-error"></small>
           <p class="form-security-note" data-i18n="form.security">To avoid spam, this form checks the phone, email and message before sending.</p>
-          <button class="btn submit" type="submit" data-i18n="form.submit">Send Quote Request</button>
+          <div id="form-feedback" class="form-feedback" aria-live="polite" hidden>
+            <strong id="form-feedback-title">Thank you. Your request was sent successfully.</strong>
+            <span id="form-feedback-text">We received your information and will contact you soon.</span>
+          </div>
+          <div class="form-actions">
+            <button class="btn submit" type="submit" data-i18n="form.submit">Send Quote Request</button>
+            <button class="btn cancel-submit" id="cancel-submit" type="button" hidden>Cancel and edit</button>
+          </div>
         </form>
-        <div id="thank-you" class="thank-you-panel" aria-live="polite">
-          <strong data-i18n="thank.title">Thank you.</strong> <span data-i18n="thank.text">Your request was sent successfully.</span>
-          <a href="https://uniknaples.com/" data-i18n="thank.back">Back to Unik Naples</a>
-        </div>
       </div>
     </section>
   </main>

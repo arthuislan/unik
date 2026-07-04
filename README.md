@@ -4,7 +4,7 @@ Official static website for **UNIK CLEANING PERSONAL CARE AND ORGANIZATION LLC.*
 
 ## Current version
 
-**v1.0.3 — Professional Thank-You Page and Favicon Update**
+**v1.0.4 — Inline Form Feedback Upgrade**
 
 ## Deploy target
 
@@ -23,31 +23,27 @@ Cloudflare Pages
 
 ## Current release notes
 
-### v1.0.3
+### v1.0.4
 
-This release updates the form completion experience and favicon assets while preserving the approved home page design.
+This release improves the form submission experience while preserving the approved home page structure and brand identity.
 
 ### What changed
 
-- Created `thank-you.html`.
-- Redirects valid form submissions to `/thank-you.html`.
-- Added multilingual thank-you copy.
-- Updated favicon assets using the approved rounded Unik icon.
-- Added modern icon files for browser, Apple and Android support.
-- Added `.gitignore`.
+- Added inline success confirmation above the submit button.
+- Added a white loading spinner and animated button sheen during submission.
+- Added a temporary cancel/edit option while the request is sending.
+- Added multilingual success, error and cancelled messages.
 - Updated project documentation.
 
 ### What did not change
 
-- Main page layout.
-- CSS.
-- Spacing.
-- Quote panel design.
-- Header.
+- Header layout.
+- Quote panel structure.
 - Services.
 - About section.
 - Contact information.
 - Floating buttons.
+- Favicon system from v1.0.3.
 
 ## Workflow
 

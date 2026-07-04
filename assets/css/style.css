@@ -584,3 +584,121 @@
     padding: 28px 24px;
   }
 }
+
+/* v1.0.4 — Professional inline form feedback */
+.form-feedback {
+  display: none;
+  margin: 4px 0 18px;
+  padding: 16px 18px;
+  border-radius: 18px;
+  line-height: 1.45;
+  border: 1px solid rgba(17, 17, 17, 0.08);
+  background: rgba(255, 255, 255, 0.78);
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.08);
+  outline: none;
+}
+.form-feedback.visible {
+  display: block;
+  animation: feedbackReveal .28s ease both;
+}
+.form-feedback strong {
+  display: block;
+  margin-bottom: 4px;
+  font-size: 15px;
+  color: var(--dark);
+}
+.form-feedback span {
+  display: block;
+  color: var(--muted);
+  font-size: 14px;
+}
+.form-feedback.success {
+  border-color: rgba(34, 197, 94, 0.28);
+  background: linear-gradient(135deg, rgba(242, 251, 245, 0.98), rgba(255, 255, 255, 0.96));
+}
+.form-feedback.success strong::before {
+  content: "✓";
+  display: inline-grid;
+  place-items: center;
+  width: 22px;
+  height: 22px;
+  margin-right: 8px;
+  border-radius: 999px;
+  color: #fff;
+  background: #16a34a;
+  font-size: 13px;
+  vertical-align: -2px;
+}
+.form-feedback.error {
+  border-color: rgba(180, 35, 24, 0.22);
+  background: linear-gradient(135deg, rgba(255, 245, 245, 0.98), rgba(255, 255, 255, 0.96));
+}
+.form-feedback.neutral {
+  border-color: rgba(221, 10, 161, 0.18);
+  background: linear-gradient(135deg, rgba(253, 242, 248, 0.98), rgba(255, 255, 255, 0.96));
+}
+.form-actions {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 12px;
+  align-items: center;
+}
+.form-actions .submit {
+  width: 100%;
+}
+.cancel-submit {
+  min-width: 146px;
+  padding-inline: 18px;
+  color: var(--dark);
+  background: #fff;
+  border: 1px solid rgba(17, 17, 17, 0.12);
+  box-shadow: none;
+  cursor: pointer;
+}
+.cancel-submit:hover {
+  background: #f8f8f8;
+  color: var(--dark);
+}
+.submit.is-loading {
+  position: relative;
+  overflow: hidden;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+.submit.is-loading::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  transform: translateX(-110%);
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.24), transparent);
+  animation: buttonSheen 1.05s ease-in-out infinite;
+}
+.button-loader {
+  width: 17px;
+  height: 17px;
+  border-radius: 999px;
+  border: 2px solid rgba(255, 255, 255, 0.42);
+  border-top-color: #fff;
+  animation: buttonSpin .78s linear infinite;
+  flex: 0 0 auto;
+}
+@keyframes buttonSpin {
+  to { transform: rotate(360deg); }
+}
+@keyframes buttonSheen {
+  to { transform: translateX(110%); }
+}
+@keyframes feedbackReveal {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@media (max-width: 640px) {
+  .form-actions {
+    grid-template-columns: 1fr;
+  }
+  .cancel-submit {
+    width: 100%;
+  }
+}
