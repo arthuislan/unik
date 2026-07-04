@@ -758,3 +758,27 @@
   overflow: hidden;
   transition: opacity 300ms ease, transform 300ms ease, max-height 300ms ease, margin-top 300ms ease;
 }
+
+/* v1.0.8 — Desktop floating actions: vertical dock on larger screens.
+   Mobile/tablet behavior remains unchanged. */
+@media (min-width: 1024px) {
+  .float-dock {
+    left: auto;
+    right: 24px;
+    bottom: 24px;
+    transform: none;
+    flex-direction: column;
+    gap: 10px;
+    padding: 8px;
+    border-radius: 999px;
+  }
+
+  .float-dock a {
+    width: 52px;
+    height: 52px;
+  }
+
+  .float-dock a:hover {
+    transform: translateX(-3px) scale(1.04);
+  }
+}

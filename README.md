@@ -1,37 +1,34 @@
 # Unik Naples Website
 
-Official website for **UNIK Cleaning Personal Care and Organization LLC.**
+Official website for Unik Cleaning Personal Care and Organization LLC.
 
-## Current version
-**v1.0.7 — Final Submission Experience**
+## Current Version
 
-## What changed in v1.0.7
-This version finalizes the form submission flow.
+**v1.0.9 — Cancel Button Timing Logic**
 
-After a successful submission:
-- The **Send Quote Request** button disappears.
-- The **Cancel & Edit** button disappears.
-- The confirmation message remains visible above the action area.
-- The information typed by the customer remains visible in the form.
-- A second accidental submission is prevented.
+## Version Notes
 
-## Files intentionally changed
-- `assets/js/script.js`
-- `assets/css/style.css`
-- `README.md`
-- `CHANGELOG.md`
-- `VERSION.md`
+### v1.0.9
+- Refined the premium form experience.
+- The **Cancel & Edit** button appears only while the 20-second countdown is active.
+- After the countdown finishes and the form begins sending, the cancel button is hidden.
+- Layout and visual structure were preserved.
 
-## Preserved
-- Main design and layout.
-- Header.
-- Hero.
-- Services.
-- About.
-- Quote/contact panel structure.
-- Floating contact buttons.
-- Favicons.
-- SEO metadata.
+### v1.0.8
+- Desktop floating contact buttons changed to a vertical dock.
+- Mobile/tablet behavior preserved.
 
-## Deployment
-This project is deployed through GitHub and Cloudflare Pages.
+### v1.0.7
+- Form action buttons disappear after successful submission.
+
+### v1.0.6
+- Fixed countdown behavior and anchor navigation alignment.
+
+### v1.0.5
+- Added premium form loading experience.
+
+### v1.0.3
+- Added thank-you page and updated favicon set.
+
+
+Audit confirmation: v1.0.9 was verified as inheriting v1.0.8 desktop floating vertical layout and correcting the JavaScript cache reference to v1.0.9.

@@ -1,27 +1,23 @@
-# Unik Naples Website Version
+# Unik Website Version
 
-Current version: **1.0.7**
+Current version: v1.0.9
 
-## Release
-**v1.0.7 — Final Submission Experience**
+## v1.0.9 — Cancel Button Timing Logic
 
-## Scope
-This version completes the form submission experience by hiding the submission actions after a successful request.
+Status: Approved after audit
 
-## Approved change
-- Hide **Send Quote Request** after successful submission.
-- Hide **Cancel & Edit** after successful submission.
-- Keep the professional success message visible above the action area.
-- Preserve the form data after submission so the customer can still see what was sent.
-- Prevent accidental duplicate submission after success.
+### Scope
+- The **Cancel & Edit** button now appears only during the 20-second pre-send countdown.
+- Once the countdown ends and the request is actually being sent, the cancel option disappears.
+- This makes the form logic clearer and prevents the user from believing a request can be cancelled after it has already started sending.
 
-## Preserved
-- Main layout.
-- Header.
-- Hero.
-- Services.
-- About section.
-- Contact panel.
-- Floating buttons.
-- Favicons.
-- SEO metadata.
+### Preserved
+- Main layout
+- Header
+- Contact section
+- Floating buttons
+- Favicon
+- Premium form loading experience
+
+
+Audit confirmation: v1.0.9 was verified as inheriting v1.0.8 desktop floating vertical layout and correcting the JavaScript cache reference to v1.0.9.

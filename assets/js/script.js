@@ -276,7 +276,7 @@
     feedbackPanel.hidden = true;
   }
 
-  function setSubmitting(isSubmitting) {
+  function setSubmitting(isSubmitting, allowCancel = false) {
     if (!submitButton) return;
     submitButton.disabled = isSubmitting;
     submitButton.classList.toggle('is-loading', isSubmitting);
@@ -285,8 +285,8 @@
       : t('form.submit');
     submitButton.setAttribute('aria-busy', isSubmitting ? 'true' : 'false');
     if (cancelButton) {
-      cancelButton.hidden = !isSubmitting;
-      cancelButton.disabled = !isSubmitting;
+      cancelButton.hidden = !(isSubmitting && allowCancel);
+      cancelButton.disabled = !(isSubmitting && allowCancel);
       cancelButton.textContent = t('form.cancel');
     }
   }
@@ -380,11 +380,12 @@
     }
 
     activeRequestController = new AbortController();
-    setSubmitting(true);
+    setSubmitting(true, true);
     showFeedback('processing', t('form.processingTitle'), `${t('form.processingText')} ${getCountdownText(20)}`);
 
     try {
       await delayBeforeSending(activeRequestController.signal);
+      setSubmitting(true, false);
 
       const originalPhone = fields.phone.value;
       let digits = digitsOnly(fields.phone.value);

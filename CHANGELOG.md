@@ -1,35 +1,37 @@
 # Changelog
 
-## v1.0.7 — Final Submission Experience
+## v1.0.9 — Cancel Button Timing Logic
 
 ### Changed
-- After a successful form submission, the **Send Quote Request** button is hidden.
-- After a successful form submission, the **Cancel & Edit** button is hidden.
-- The success message remains visible above the form action area.
-- Form data is preserved after success so the visitor can still review what was sent.
-- Duplicate submissions after success are prevented.
+- Updated form logic so **Cancel & Edit** is visible only during the 20-second pre-send countdown.
+- The cancel button is hidden once the request enters the actual sending step.
 
 ### Preserved
-- Main visual layout.
-- Header and navigation.
-- Hero section.
-- Services section.
-- About section.
-- Quote/contact panel structure.
+- Main layout.
+- Header.
+- Contact form structure.
 - Floating contact buttons.
-- Favicons and metadata from v1.0.6.
+- Favicon and brand assets.
+- Existing premium loading and success feedback.
+
+### Audit
+- JavaScript syntax verified.
+- Required files verified.
+- Version documentation updated.
+
+## v1.0.8 — Desktop Floating Actions Layout
+- Desktop floating actions changed to vertical.
+- Mobile/tablet behavior preserved.
+
+## v1.0.7 — Final Submission Experience
+- Action buttons disappear after successful submission.
 
 ## v1.0.6 — Form Countdown and Navigation Fix
-- Fixed visible 20-second countdown before sending.
-- Fixed anchor navigation alignment so section titles are not hidden behind the header.
-- Added cache-busting for updated assets.
+- Countdown corrected.
+- Anchor navigation alignment improved.
 
 ## v1.0.5 — Premium Form Experience
-- Added premium form processing experience.
-- Added 20-second pre-send flow.
-- Added Cancel & Edit during processing.
-- Added inline success feedback.
+- Added 20-second premium form experience.
 
-## v1.0.3 — Thank-You Page + Favicon Final
-- Added professional thank-you page.
-- Added final favicon set.
+
+Audit confirmation: v1.0.9 was verified as inheriting v1.0.8 desktop floating vertical layout and correcting the JavaScript cache reference to v1.0.9.
