@@ -747,3 +747,14 @@
 #services, #about, #contact, #home {
   scroll-margin-top: 104px;
 }
+
+/* v1.0.7 — Final Submission Experience */
+.form-actions.submission-complete {
+  opacity: 0;
+  transform: translateY(-4px);
+  pointer-events: none;
+  max-height: 0;
+  margin-top: 0;
+  overflow: hidden;
+  transition: opacity 300ms ease, transform 300ms ease, max-height 300ms ease, margin-top 300ms ease;
+}

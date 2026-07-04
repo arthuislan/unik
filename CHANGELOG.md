@@ -1,41 +1,35 @@
 # Changelog
 
-## v1.0.6 — Form Countdown and Navigation Alignment Fix
+## v1.0.7 — Final Submission Experience
 
 ### Changed
+- After a successful form submission, the **Send Quote Request** button is hidden.
+- After a successful form submission, the **Cancel & Edit** button is hidden.
+- The success message remains visible above the form action area.
+- Form data is preserved after success so the visitor can still review what was sent.
+- Duplicate submissions after success are prevented.
 
-- Made the 20-second form preparation period visible with a live countdown.
-- Ensured the request is only sent after the 20-second preparation period finishes.
-- Preserved the `Cancel & Edit` behavior before the request is sent.
-- Added cache-busting query strings to `style.css` and `script.js` so the live site loads the new version instead of a cached file.
-- Fixed navigation anchor alignment for Services, About and Contact with sticky-header offset handling.
+### Preserved
+- Main visual layout.
+- Header and navigation.
+- Hero section.
+- Services section.
+- About section.
+- Quote/contact panel structure.
+- Floating contact buttons.
+- Favicons and metadata from v1.0.6.
 
-### Files changed
-
-- `index.html`
-- `assets/js/script.js`
-- `assets/css/style.css`
-- `README.md`
-- `CHANGELOG.md`
-- `VERSION.md`
-
-### Not changed
-
-- No main layout redesign.
-- No quote panel redesign.
-- No header visual redesign.
-- No floating contact button change.
-- No favicon change.
-- No image asset change.
+## v1.0.6 — Form Countdown and Navigation Fix
+- Fixed visible 20-second countdown before sending.
+- Fixed anchor navigation alignment so section titles are not hidden behind the header.
+- Added cache-busting for updated assets.
 
 ## v1.0.5 — Premium Form Experience
+- Added premium form processing experience.
+- Added 20-second pre-send flow.
+- Added Cancel & Edit during processing.
+- Added inline success feedback.
 
-- Added premium inline form feedback and `Cancel & Edit` behavior.
-
-## v1.0.4 — Inline Form Feedback Upgrade
-
-- Added inline success/error/cancel feedback.
-
-## v1.0.3 — Thank-You Page and Favicon Final
-
-- Added thank-you page and finalized favicon system.
+## v1.0.3 — Thank-You Page + Favicon Final
+- Added professional thank-you page.
+- Added final favicon set.

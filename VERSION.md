@@ -1,24 +1,27 @@
-# Version
+# Unik Naples Website Version
 
-Current version: **v1.0.6**
+Current version: **1.0.7**
 
 ## Release
-
-**v1.0.6 — Form Countdown and Navigation Alignment Fix**
-
-Status: Approved after file audit.
+**v1.0.7 — Final Submission Experience**
 
 ## Scope
+This version completes the form submission experience by hiding the submission actions after a successful request.
 
-- Fix the 20-second premium form preparation experience so the countdown is visible before the request is sent.
-- Add cache-busting to CSS and JavaScript references so Cloudflare/browser cache loads the new behavior.
-- Correct anchor navigation alignment for Services, About and Contact so section titles are not hidden behind the sticky header.
+## Approved change
+- Hide **Send Quote Request** after successful submission.
+- Hide **Cancel & Edit** after successful submission.
+- Keep the professional success message visible above the action area.
+- Preserve the form data after submission so the customer can still see what was sent.
+- Prevent accidental duplicate submission after success.
 
-## Not changed
-
+## Preserved
 - Main layout.
-- Quote panel design.
-- Header design.
+- Header.
+- Hero.
+- Services.
+- About section.
+- Contact panel.
 - Floating buttons.
-- Favicon system.
-- Images.
+- Favicons.
+- SEO metadata.

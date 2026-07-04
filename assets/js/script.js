@@ -245,6 +245,7 @@
 
   const submitButton = form.querySelector('button[type="submit"]');
   const cancelButton = form.querySelector('#cancel-submit');
+  const formActions = form.querySelector('.form-actions');
   const feedbackPanel = document.querySelector('#form-feedback');
   const feedbackTitle = document.querySelector('#form-feedback-title');
   const feedbackText = document.querySelector('#form-feedback-text');
@@ -287,6 +288,21 @@
       cancelButton.hidden = !isSubmitting;
       cancelButton.disabled = !isSubmitting;
       cancelButton.textContent = t('form.cancel');
+    }
+  }
+
+  function setSubmissionComplete(isComplete) {
+    if (formActions) {
+      formActions.classList.toggle('submission-complete', isComplete);
+      formActions.setAttribute('aria-hidden', isComplete ? 'true' : 'false');
+    }
+    if (submitButton) {
+      submitButton.hidden = isComplete;
+      submitButton.disabled = isComplete;
+    }
+    if (cancelButton) {
+      cancelButton.hidden = true;
+      cancelButton.disabled = true;
     }
   }
 
@@ -348,6 +364,7 @@
         activeRequestController = null;
       }
       clearPendingSubmit();
+      setSubmissionComplete(false);
       setSubmitting(false);
       showFeedback('neutral', t('form.cancel'), t('form.cancelled'));
     });
@@ -355,6 +372,7 @@
 
   form.addEventListener('submit', async function (event) {
     event.preventDefault();
+    setSubmissionComplete(false);
     hideFeedback();
 
     if (!validateForm()) {
@@ -386,7 +404,7 @@
 
       localStorage.setItem('unikLastSubmit', String(Date.now()));
       showFeedback('success', t('form.successTitle'), t('form.successText'));
-      form.reset();
+      setSubmissionComplete(true);
     } catch (error) {
       if (error.name !== 'AbortError') {
         showFeedback('error', t('form.errorTitle'), t('form.submitError'));
@@ -394,7 +412,9 @@
     } finally {
       clearPendingSubmit();
       activeRequestController = null;
-      setSubmitting(false);
+      if (!formActions || !formActions.classList.contains('submission-complete')) {
+        setSubmitting(false);
+      }
     }
   });
 

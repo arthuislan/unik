@@ -1,41 +1,37 @@
 # Unik Naples Website
 
-Official website for **UNIK CLEANING PERSONAL CARE AND ORGANIZATION LLC.**
+Official website for **UNIK Cleaning Personal Care and Organization LLC.**
 
 ## Current version
+**v1.0.7 — Final Submission Experience**
 
-**v1.0.6 — Form Countdown and Navigation Alignment Fix**
+## What changed in v1.0.7
+This version finalizes the form submission flow.
 
-## v1.0.6 Summary
+After a successful submission:
+- The **Send Quote Request** button disappears.
+- The **Cancel & Edit** button disappears.
+- The confirmation message remains visible above the action area.
+- The information typed by the customer remains visible in the form.
+- A second accidental submission is prevented.
 
-This release corrects two issues found after publishing v1.0.5:
-
-1. The premium form experience was completing too quickly on the live site.
-2. Navigation links to Services, About and Contact were being hidden by the sticky header.
-
-## v1.0.6 Changes
-
-- Added a visible 20-second countdown during form preparation.
-- Confirmed the form request is delayed until the countdown finishes.
-- Kept `Cancel & Edit` available during the preparation window.
-- Added cache-busting to the CSS and JavaScript URLs.
-- Added sticky-header-aware anchor scrolling.
-- Added CSS scroll offset for direct anchor navigation.
-
-## Files changed
-
-- `index.html`
+## Files intentionally changed
 - `assets/js/script.js`
 - `assets/css/style.css`
 - `README.md`
 - `CHANGELOG.md`
 - `VERSION.md`
 
-## Integrity notes
+## Preserved
+- Main design and layout.
+- Header.
+- Hero.
+- Services.
+- About.
+- Quote/contact panel structure.
+- Floating contact buttons.
+- Favicons.
+- SEO metadata.
 
-- Main layout preserved.
-- Header design preserved.
-- Quote panel design preserved.
-- Floating contact buttons preserved.
-- Favicon system preserved.
-- Images preserved.
+## Deployment
+This project is deployed through GitHub and Cloudflare Pages.
