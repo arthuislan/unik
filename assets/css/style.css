@@ -639,16 +639,22 @@
 }
 .form-actions {
   display: grid;
-  grid-template-columns: 1fr auto;
+  grid-template-columns: 1fr;
   gap: 12px;
-  align-items: center;
+  align-items: stretch;
 }
 .form-actions .submit {
   width: 100%;
 }
+.cancel-submit[hidden] {
+  display: none !important;
+}
 .cancel-submit {
-  min-width: 146px;
-  padding-inline: 18px;
+  width: fit-content;
+  min-width: 168px;
+  max-width: 100%;
+  justify-self: center;
+  padding-inline: 20px;
   color: var(--dark);
   background: #fff;
   border: 1px solid rgba(17, 17, 17, 0.12);
@@ -695,9 +701,6 @@
   to { opacity: 1; transform: translateY(0); }
 }
 @media (max-width: 640px) {
-  .form-actions {
-    grid-template-columns: 1fr;
-  }
   .cancel-submit {
     width: 100%;
   }

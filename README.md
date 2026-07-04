@@ -1,63 +1,38 @@
 # Unik Naples Website
 
-Official static website for **UNIK CLEANING PERSONAL CARE AND ORGANIZATION LLC.**
+Official website for Unik Naples.
 
-## Current version
+## Current Version
 
-**v1.0.4 — Inline Form Feedback Upgrade**
+v1.0.5 — Cancel Button Visibility Fix
 
-## Deploy target
+## Deployment
 
-Cloudflare Pages
+This site is deployed with GitHub and Cloudflare Pages.
 
-## Build settings
+## Version policy
 
-- Build command: leave empty
-- Build output directory: `/` or `.` depending on the Cloudflare interface
+Every release must follow the professional Unik workflow:
 
-## Version rules
+1. Use the latest approved project version as the base.
+2. Make only the requested change.
+3. Preserve unrelated layout, structure, styling and functionality.
+4. Update `README.md`, `CHANGELOG.md` and `VERSION.md`.
+5. Audit the package before approval.
 
-- `v1.0.x` = patch updates and small corrections.
-- `v1.1.x` = small feature additions.
-- `v2.0.0` = major visual or structural redesign.
+## v1.0.5 Checklist
 
-## Current release notes
+- [x] Based on v1.0.4.
+- [x] Fixed only the cancel button visibility issue.
+- [x] Preserved `index.html`.
+- [x] Preserved `assets/js/script.js`.
+- [x] Preserved the approved main layout.
+- [x] Preserved favicon and thank-you page.
+- [x] Updated documentation files.
 
-### v1.0.4
+## Files changed in v1.0.5
 
-This release improves the form submission experience while preserving the approved home page structure and brand identity.
-
-### What changed
-
-- Added inline success confirmation above the submit button.
-- Added a white loading spinner and animated button sheen during submission.
-- Added a temporary cancel/edit option while the request is sending.
-- Added multilingual success, error and cancelled messages.
-- Updated project documentation.
-
-### What did not change
-
-- Header layout.
-- Quote panel structure.
-- Services.
-- About section.
-- Contact information.
-- Floating buttons.
-- Favicon system from v1.0.3.
-
-## Workflow
-
-1. Edit files locally.
-2. Review changes in GitHub Desktop.
-3. Commit with a clear message.
-4. Push origin.
-5. Cloudflare Pages deploys automatically.
-
-## Important files
-
-- `index.html` — main site page.
-- `thank-you.html` — form success page.
-- `assets/css/style.css` — main styles.
-- `assets/js/script.js` — language switcher and form validation logic.
-- `CHANGELOG.md` — version history.
-- `VERSION.md` — current version details.
+- `assets/css/style.css`
+- `README.md`
+- `CHANGELOG.md`
+- `VERSION.md`
