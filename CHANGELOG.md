@@ -35,3 +35,22 @@
 
 
 Audit confirmation: v1.0.9 was verified as inheriting v1.0.8 desktop floating vertical layout and correcting the JavaScript cache reference to v1.0.9.
+
+
+## v1.0.10 — Form Timing & Cancel Visibility Fix
+
+### Changed
+- Reduced the premium pre-send countdown from 20 seconds to 10 seconds.
+- Added a CSS visibility guard so the `Cancel & Edit` button cannot appear before the countdown starts.
+- Updated CSS and JS cache-busting references to `v=1.0.10`.
+
+### Preserved
+- v1.0.8 desktop vertical floating action buttons.
+- v1.0.9 cancel timing logic.
+- Main layout, header, hero, services, about, contact, favicons and thank-you page.
+
+### Audit
+- JavaScript syntax checked.
+- Required files present.
+- Floating action CSS verified.
+- Form countdown references verified as 10 seconds.

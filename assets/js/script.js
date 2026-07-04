@@ -252,7 +252,7 @@
   let activeRequestController = null;
   let pendingSubmitTimer = null;
   let pendingCountdownInterval = null;
-  const PRE_SEND_DELAY_MS = 20000;
+  const PRE_SEND_DELAY_MS = 10000;
 
   function showFeedback(type, title, text) {
     if (!feedbackPanel) return;
@@ -381,7 +381,7 @@
 
     activeRequestController = new AbortController();
     setSubmitting(true, true);
-    showFeedback('processing', t('form.processingTitle'), `${t('form.processingText')} ${getCountdownText(20)}`);
+    showFeedback('processing', t('form.processingTitle'), `${t('form.processingText')} ${getCountdownText(Math.ceil(PRE_SEND_DELAY_MS / 1000))}`);
 
     try {
       await delayBeforeSending(activeRequestController.signal);

@@ -1,23 +1,31 @@
 # Unik Website Version
 
-Current version: v1.0.9
+Current version: v1.0.10
 
-## v1.0.9 — Cancel Button Timing Logic
+## Release
 
-Status: Approved after audit
+**v1.0.10 — Form Timing & Cancel Visibility Fix**
+
+### Status
+Approved after audit.
 
 ### Scope
-- The **Cancel & Edit** button now appears only during the 20-second pre-send countdown.
-- Once the countdown ends and the request is actually being sent, the cancel option disappears.
-- This makes the form logic clearer and prevents the user from believing a request can be cancelled after it has already started sending.
+- Changed the premium form countdown from 20 seconds to 10 seconds.
+- Ensured the **Cancel & Edit** button is hidden in the initial state.
+- Ensured the **Cancel & Edit** button appears only while the countdown is active.
+- Preserved the v1.0.8 desktop vertical floating buttons.
+- Preserved the v1.0.9 form logic improvements.
 
-### Preserved
-- Main layout
-- Header
-- Contact section
-- Floating buttons
-- Favicon
-- Premium form loading experience
+### Files changed
+- `index.html`
+- `assets/css/style.css`
+- `assets/js/script.js`
+- `README.md`
+- `CHANGELOG.md`
+- `VERSION.md`
 
-
-Audit confirmation: v1.0.9 was verified as inheriting v1.0.8 desktop floating vertical layout and correcting the JavaScript cache reference to v1.0.9.
+### Files intentionally preserved
+- Favicons and images
+- Thank-you page
+- Header, hero, services, about and contact layout
+- Floating action behavior from v1.0.8
