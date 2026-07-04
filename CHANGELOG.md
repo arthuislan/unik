@@ -1,5 +1,20 @@
 # Changelog
 
+## v1.1.2 — Diagnostic Email Pipeline
+
+### Added
+- Diagnostic response payloads for `/api/contact`.
+- Clear error codes and request IDs for email delivery failures.
+- Sanitized logs for Cloudflare Function troubleshooting.
+- Front-end diagnostic display during failed preview submissions.
+
+### Preserved
+- Approved layout.
+- CSS.
+- Form UX timing and cancel logic.
+- Floating buttons behavior.
+
+
 ## v1.1.1 — Professional Email Pipeline
 
 ### Fixed

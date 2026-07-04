@@ -68,3 +68,23 @@ This release improves the Resend + Cloudflare Pages Function email infrastructur
 ### Deployment note
 Before approving production deployment, test this version in a Cloudflare Preview deployment and confirm that `RESEND_API_KEY` exists in the Preview environment.
 
+
+
+## v1.1.2 — Diagnostic Email Pipeline
+
+### Objective
+Add diagnostic visibility to the Cloudflare Function + Resend email flow.
+
+### Changed files
+- `functions/api/contact.js`
+- `assets/js/script.js`
+- `index.html`
+- `README.md`
+- `CHANGELOG.md`
+- `VERSION.md`
+
+### Notes
+- Layout preserved.
+- CSS preserved.
+- The form now surfaces diagnostic code/request ID during preview testing when the server rejects the submission.
+- Cloudflare Function logs include Resend status, status text, and sanitized API key presence.

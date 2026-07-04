@@ -318,6 +318,20 @@
     feedbackText.textContent = `${t('form.processingText')} ${getCountdownText(seconds)}`;
   }
 
+  function getDiagnosticText(result) {
+    if (!result || !result.diagnostic) return '';
+    const diagnostic = result.diagnostic;
+    const parts = [];
+    if (diagnostic.code) parts.push(`Code: ${diagnostic.code}`);
+    if (diagnostic.status) parts.push(`Status: ${diagnostic.status}`);
+    if (diagnostic.resendError && diagnostic.resendError.message) parts.push(`Resend: ${diagnostic.resendError.message}`);
+    if (diagnostic.resendError && diagnostic.resendError.name) parts.push(`Type: ${diagnostic.resendError.name}`);
+    if (diagnostic.hint) parts.push(`Hint: ${diagnostic.hint}`);
+    if (result.requestId) parts.push(`Request ID: ${result.requestId}`);
+    return parts.length ? ` Diagnostic: ${parts.join(' | ')}` : '';
+  }
+
+
   function clearPendingSubmit() {
     if (pendingSubmitTimer) {
       clearTimeout(pendingSubmitTimer);
@@ -413,14 +427,20 @@
       });
 
       const result = await response.json().catch(() => ({}));
-      if (!response.ok || !result.ok) throw new Error(result.error || 'Form submission failed');
+      if (!response.ok || !result.ok) {
+        const diagnosticText = getDiagnosticText(result);
+        const error = new Error(`${result.error || 'Form submission failed'}${diagnosticText}`);
+        error.publicMessage = `${t('form.submitError')}${diagnosticText}`;
+        throw error;
+      }
 
       localStorage.setItem('unikLastSubmit', String(Date.now()));
       showFeedback('success', t('form.successTitle'), t('form.successText'));
       setSubmissionComplete(true);
     } catch (error) {
       if (error.name !== 'AbortError') {
-        showFeedback('error', t('form.errorTitle'), t('form.submitError'));
+        console.error('UNIK form submission failed', error);
+        showFeedback('error', t('form.errorTitle'), error.publicMessage || t('form.submitError'));
       }
     } finally {
       clearPendingSubmit();

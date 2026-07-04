@@ -13,6 +13,22 @@ function jsonResponse(payload, status = 200) {
   });
 }
 
+function redactValue(value = '') {
+  const text = String(value || '');
+  if (!text) return '';
+  if (text.length <= 10) return `${text.slice(0, 2)}***`;
+  return `${text.slice(0, 6)}***${text.slice(-4)}`;
+}
+
+function makeDiagnostic(code, requestId, details = {}) {
+  return {
+    code,
+    requestId,
+    timestamp: new Date().toISOString(),
+    ...details
+  };
+}
+
 function escapeHtml(value = '') {
   return String(value)
     .replace(/&/g, '&amp;')
@@ -154,24 +170,63 @@ function internalHtmlEmail(data, meta) {
 }
 
 async function sendEmail(env, payload, label, requestId) {
-  const response = await fetch(RESEND_ENDPOINT, {
-    method: 'POST',
-    headers: {
-      'Authorization': `Bearer ${env.RESEND_API_KEY}`,
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify(payload)
+  console.log('UNIK Resend send attempt', {
+    requestId,
+    label,
+    from: payload.from,
+    to: payload.to,
+    hasApiKey: Boolean(env.RESEND_API_KEY),
+    apiKeyPreview: redactValue(env.RESEND_API_KEY)
   });
 
-  const result = await response.json().catch(() => ({}));
+  let response;
+  let result = {};
+
+  try {
+    response = await fetch(RESEND_ENDPOINT, {
+      method: 'POST',
+      headers: {
+        'Authorization': `Bearer ${env.RESEND_API_KEY}`,
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(payload)
+    });
+  } catch (error) {
+    console.error('UNIK Resend network failure', {
+      requestId,
+      label,
+      message: error.message
+    });
+    const wrapped = new Error(error.message || 'Resend network request failed');
+    wrapped.diagnostic = makeDiagnostic('resend_network_failure', requestId, {
+      label,
+      message: error.message || 'Unknown network error'
+    });
+    throw wrapped;
+  }
+
+  try {
+    result = await response.json();
+  } catch (error) {
+    result = { nonJsonResponse: true };
+  }
+
   if (!response.ok) {
-    console.error('UNIK email delivery failed', {
+    console.error('UNIK Resend API rejected request', {
       requestId,
       label,
       status: response.status,
+      statusText: response.statusText,
       resendError: result
     });
-    throw new Error(result.message || result.error || `${label} email failed`);
+    const wrapped = new Error(result.message || result.error || `${label} email failed`);
+    wrapped.diagnostic = makeDiagnostic('resend_api_rejected', requestId, {
+      label,
+      status: response.status,
+      statusText: response.statusText,
+      resendError: result
+    });
+    throw wrapped;
   }
 
   console.log('UNIK email delivery succeeded', {
@@ -181,6 +236,7 @@ async function sendEmail(env, payload, label, requestId) {
   });
   return result;
 }
+
 
 function buildInternalEmail(cleanData, submittedAt, requestId) {
   return {
@@ -208,12 +264,21 @@ export async function onRequestPost({ request, env }) {
   const requestId = getRequestId();
   console.log('UNIK contact request received', {
     requestId,
-    hasResendKey: Boolean(env.RESEND_API_KEY)
+    hasResendKey: Boolean(env.RESEND_API_KEY),
+    apiKeyPreview: redactValue(env.RESEND_API_KEY),
+    method: request.method,
+    url: request.url
   });
 
   if (!env.RESEND_API_KEY) {
     console.error('UNIK email service missing RESEND_API_KEY', { requestId });
-    return jsonResponse({ ok: false, error: 'Email service is not configured.', code: 'missing_resend_api_key', requestId }, 500);
+    return jsonResponse({
+      ok: false,
+      error: 'Email service is not configured.',
+      code: 'missing_resend_api_key',
+      requestId,
+      diagnostic: makeDiagnostic('missing_resend_api_key', requestId, { hint: 'RESEND_API_KEY is not available to this Cloudflare Pages deployment. Check Preview variables and redeploy.' })
+    }, 500);
   }
 
   let data;
@@ -261,7 +326,13 @@ export async function onRequestPost({ request, env }) {
     internalResult = await sendEmail(env, buildInternalEmail(cleanData, submittedAt, requestId), 'internal', requestId);
   } catch (error) {
     console.error('UNIK internal notification failed', { requestId, message: error.message });
-    return jsonResponse({ ok: false, error: 'We could not deliver the request to UNIK right now.', code: 'internal_email_failed', requestId }, 502);
+    return jsonResponse({
+      ok: false,
+      error: 'We could not deliver the request to UNIK right now.',
+      code: 'internal_email_failed',
+      requestId,
+      diagnostic: error.diagnostic || makeDiagnostic('internal_email_failed', requestId, { message: error.message })
+    }, 502);
   }
 
   let clientResult = null;
@@ -279,6 +350,7 @@ export async function onRequestPost({ request, env }) {
   return jsonResponse({
     ok: true,
     requestId,
+    diagnostic: makeDiagnostic('success', requestId, { clientEmailSent }),
     internalEmailId: internalResult && internalResult.id ? internalResult.id : null,
     clientEmailSent,
     clientEmailId: clientResult && clientResult.id ? clientResult.id : null
