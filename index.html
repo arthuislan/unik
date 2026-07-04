@@ -19,7 +19,7 @@
   <link rel="apple-touch-icon" sizes="180x180" href="/assets/images/apple-touch-icon.png" />
   <link rel="manifest" href="/site.webmanifest" />
   <meta name="theme-color" content="#DD0AA1" />
-  <link rel="stylesheet" href="assets/css/style.css?v=1.0.10" />
+  <link rel="stylesheet" href="assets/css/style.css?v=1.1.0" />
 </head>
 <body>
   <header>
@@ -109,11 +109,7 @@
           </div>
           <div class="quote-note" data-i18n="quote.note">Prefer direct contact? Use the floating buttons at the bottom of the page.</div>
         </div>
-        <form id="quote-form" action="https://formsubmit.co/contact@uniknaples.com" method="POST" novalidate>
-          <input type="hidden" name="_subject" value="New quote request from Unik Naples website">
-          <input type="hidden" name="_captcha" value="false">
-          <input type="hidden" name="_template" value="table">
-          <input type="hidden" name="_next" value="https://uniknaples.com/thank-you.html">
+        <form id="quote-form" action="/api/contact" method="POST" novalidate>
           <input type="hidden" name="_honey" value="" autocomplete="off">
           <div class="form-row">
             <div class="form-field">
@@ -187,6 +183,6 @@
       </svg>
     </a>
   </div>
-  <script src="assets/js/script.js?v=1.0.10"></script>
+  <script src="assets/js/script.js?v=1.1.0"></script>
 </body>
 </html>

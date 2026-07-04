@@ -1,44 +1,55 @@
 # Unik Naples Website
 
-Official website for Unik Cleaning Personal Care and Organization LLC.
+Official website for **Unik Cleaning Personal Care and Organization LLC.**
 
 ## Current Version
 
-**v1.0.10 — Cancel Button Timing Logic**
+**v1.1.0 — Professional Email Infrastructure**
+
+## What this version does
+
+This release upgrades the contact form from a third-party public form endpoint to a secure Cloudflare Pages Function integrated with Resend.
+
+When a visitor submits the quote form:
+
+1. The existing premium 10-second form experience is preserved.
+2. The form sends the data to `/api/contact`.
+3. The Cloudflare Function validates the request.
+4. Resend sends an internal notification to `contact@uniknaples.com`.
+5. Resend sends a professional confirmation email to the customer.
+6. The site displays the same approved success message.
+
+## Required Cloudflare Secret
+
+The project requires this Cloudflare Pages secret:
+
+```text
+RESEND_API_KEY
+```
+
+The Resend API key must never be committed to GitHub. It must be stored only inside Cloudflare as a Secret.
 
 ## Version Notes
 
+### v1.1.0
+- Added `functions/api/contact.js`.
+- Replaced FormSubmit with secure `/api/contact` submission.
+- Added internal email notification template.
+- Added customer confirmation email template.
+- Preserved the v1.0.10 form UX and layout.
+
 ### v1.0.10
-- Refined the premium form experience.
-- The **Cancel & Edit** button appears only while the 20-second countdown is active.
-- After the countdown finishes and the form begins sending, the cancel button is hidden.
-- Layout and visual structure were preserved.
+- Reduced form countdown from 20 seconds to 10 seconds.
+- `Cancel & Edit` appears only during the active countdown.
 
 ### v1.0.8
 - Desktop floating contact buttons changed to a vertical dock.
 - Mobile/tablet behavior preserved.
 
-### v1.0.7
-- Form action buttons disappear after successful submission.
+## Deployment Notes
 
-### v1.0.6
-- Fixed countdown behavior and anchor navigation alignment.
+After uploading this version to GitHub, Cloudflare must redeploy the project so the `RESEND_API_KEY` secret becomes available to the Pages Function.
 
-### v1.0.5
-- Added premium form loading experience.
+## Audit Confirmation
 
-### v1.0.3
-- Added thank-you page and updated favicon set.
-
-
-Audit confirmation: v1.0.10 was verified as inheriting v1.0.8 desktop floating vertical layout and correcting the JavaScript cache reference to v1.0.10.
-
-
-## v1.0.10 — Form Timing & Cancel Visibility Fix
-
-- Changed form countdown from 20 seconds to 10 seconds.
-- Kept `Cancel & Edit` hidden before the user starts submission.
-- `Cancel & Edit` appears only during the active countdown window.
-- Confirmed v1.0.8 desktop vertical floating buttons are preserved.
-- Updated cache-busting query strings to `v=1.0.10`.
-- No layout redesign was performed.
+v1.1.0 was built on top of the approved v1.0.10 package and preserves the approved visual layout.

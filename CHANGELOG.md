@@ -1,56 +1,41 @@
 # Changelog
 
-## v1.0.9 — Cancel Button Timing Logic
+## v1.1.0 — Professional Email Infrastructure
+
+### Added
+- Added Cloudflare Pages Function: `functions/api/contact.js`.
+- Added secure Resend API integration using the Cloudflare Secret `RESEND_API_KEY`.
+- Added internal email notification to `contact@uniknaples.com`.
+- Added customer auto-response email with Unik branding.
+- Added server-side validation for name, phone, email and message.
+- Added honeypot spam protection handling on the server side.
 
 ### Changed
-- Updated form logic so **Cancel & Edit** is visible only during the 20-second pre-send countdown.
-- The cancel button is hidden once the request enters the actual sending step.
+- Updated form submission endpoint from FormSubmit to `/api/contact`.
+- Updated JavaScript submission logic to send JSON to the Cloudflare Function.
+- Updated cache-busting references to `v=1.1.0`.
 
 ### Preserved
-- Main layout.
-- Header.
-- Contact form structure.
-- Floating contact buttons.
-- Favicon and brand assets.
-- Existing premium loading and success feedback.
+- v1.0.10 premium 10-second form experience.
+- v1.0.10 Cancel & Edit visibility logic.
+- v1.0.8 desktop vertical floating contact buttons.
+- Main layout, header, hero, services, about, contact, favicons and thank-you page.
+- `assets/css/style.css` was not modified.
 
 ### Audit
-- JavaScript syntax verified.
-- Required files verified.
-- Version documentation updated.
-
-## v1.0.8 — Desktop Floating Actions Layout
-- Desktop floating actions changed to vertical.
-- Mobile/tablet behavior preserved.
-
-## v1.0.7 — Final Submission Experience
-- Action buttons disappear after successful submission.
-
-## v1.0.6 — Form Countdown and Navigation Fix
-- Countdown corrected.
-- Anchor navigation alignment improved.
-
-## v1.0.5 — Premium Form Experience
-- Added 20-second premium form experience.
-
-
-Audit confirmation: v1.0.9 was verified as inheriting v1.0.8 desktop floating vertical layout and correcting the JavaScript cache reference to v1.0.9.
-
+- JavaScript syntax checked.
+- Function syntax checked.
+- Required files present.
+- Form endpoint verified as `/api/contact`.
+- Documentation updated.
 
 ## v1.0.10 — Form Timing & Cancel Visibility Fix
 
 ### Changed
 - Reduced the premium pre-send countdown from 20 seconds to 10 seconds.
-- Added a CSS visibility guard so the `Cancel & Edit` button cannot appear before the countdown starts.
-- Updated CSS and JS cache-busting references to `v=1.0.10`.
+- Kept `Cancel & Edit` hidden before the user starts submission.
+- `Cancel & Edit` appears only during the active countdown window.
 
-### Preserved
-- v1.0.8 desktop vertical floating action buttons.
-- v1.0.9 cancel timing logic.
-- Main layout, header, hero, services, about, contact, favicons and thank-you page.
-
-### Audit
-- JavaScript syntax checked.
-- Required files present.
-- Floating action CSS verified.
-- Form countdown references verified as 10 seconds.
+## v1.0.8 — Desktop Floating Actions Layout
+- Desktop floating actions changed to vertical.
+- Mobile/tablet behavior preserved.

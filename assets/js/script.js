@@ -391,17 +391,29 @@
       let digits = digitsOnly(fields.phone.value);
       if (digits.length === 10) fields.phone.value = `+1${digits}`;
 
-      const formData = new FormData(form);
+      const payload = {
+        name: fields.name.value.trim(),
+        phone: fields.phone.value.trim(),
+        email: fields.email.value.trim(),
+        service: form.querySelector('#service') ? form.querySelector('#service').value : '',
+        message: fields.message.value.trim(),
+        language: currentLang,
+        honey: form.querySelector('input[name="_honey"]') ? form.querySelector('input[name="_honey"]').value : ''
+      };
       fields.phone.value = formatUSPhone(originalPhone);
 
-      const response = await fetch(form.action, {
+      const response = await fetch('/api/contact', {
         method: 'POST',
-        body: formData,
-        headers: { 'Accept': 'application/json' },
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify(payload),
         signal: activeRequestController.signal
       });
 
-      if (!response.ok) throw new Error('Form submission failed');
+      const result = await response.json().catch(() => ({}));
+      if (!response.ok || !result.ok) throw new Error(result.error || 'Form submission failed');
 
       localStorage.setItem('unikLastSubmit', String(Date.now()));
       showFeedback('success', t('form.successTitle'), t('form.successText'));
