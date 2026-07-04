@@ -238,7 +238,7 @@
     submitButton.setAttribute('aria-busy', isSubmitting ? 'true' : 'false');
   }
 
-  form.addEventListener('submit', async function (event) {
+  form.addEventListener('submit', function (event) {
     event.preventDefault();
 
     if (!validateForm()) {
@@ -248,27 +248,12 @@
     let digits = digitsOnly(fields.phone.value);
     if (digits.length === 10) fields.phone.value = `+1${digits}`;
 
+    localStorage.setItem('unikLastSubmit', String(Date.now()));
     setSubmitting(true);
 
-    try {
-      const response = await fetch(form.action, {
-        method: 'POST',
-        body: new FormData(form),
-        headers: { 'Accept': 'application/json' }
-      });
-
-      if (!response.ok) {
-        throw new Error('Form submission failed');
-      }
-
-      localStorage.setItem('unikLastSubmit', String(Date.now()));
-      form.reset();
-      showSuccessMessage();
-    } catch (error) {
-      alert(t('form.submitError'));
-    } finally {
-      setSubmitting(false);
-    }
+    // Use the browser's native form submission so FormSubmit can redirect
+    // to /thank-you.html after the message is delivered successfully.
+    HTMLFormElement.prototype.submit.call(form);
   });
 
   setLanguage(currentLang);

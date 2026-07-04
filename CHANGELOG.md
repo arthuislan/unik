@@ -1,18 +1,44 @@
 # Changelog
 
-## v1.0.3 — Favicon Update
+## v1.0.3 — Professional Thank-You Page and Favicon Update
 
-- Replaced the website favicon with the new approved minimal Unik icon.
-- Generated and added favicon files for common browser and mobile sizes:
-  - `favicon.ico`
-  - `assets/images/favicon.png`
-  - `assets/images/favicon-16x16.png`
-  - `assets/images/favicon-32x32.png`
-  - `assets/images/apple-touch-icon.png`
-  - `assets/images/android-chrome-192x192.png`
-  - `assets/images/android-chrome-512x512.png`
-- Updated only the favicon references inside the `<head>` section of `index.html`.
-- No layout, spacing, CSS, JavaScript, form logic, visible text, images, icons used in the page body, route or configuration structure was changed.
+### Changed
+
+- Updated the form success flow to redirect users to `/thank-you.html` after a valid submission.
+- Added a professional thank-you page with multilingual copy based on the selected site language.
+- Updated the favicon system using the new approved rounded Unik icon.
+- Added modern favicon assets for browsers, Apple devices and Android devices.
+- Added `site.webmanifest` for mobile/browser identity support.
+- Added `.gitignore` to prevent `.DS_Store` and local system files from being committed.
+- Updated project documentation to register the v1.0.3 release.
+
+### Files changed
+
+- `index.html`
+- `assets/js/script.js`
+- `thank-you.html`
+- `favicon.ico`
+- `assets/images/favicon.png`
+- `assets/images/favicon-16x16.png`
+- `assets/images/favicon-32x32.png`
+- `assets/images/apple-touch-icon.png`
+- `assets/images/android-chrome-192x192.png`
+- `assets/images/android-chrome-512x512.png`
+- `site.webmanifest`
+- `.gitignore`
+- `README.md`
+- `CHANGELOG.md`
+- `VERSION.md`
+
+### Not changed
+
+- No main layout change.
+- No spacing change.
+- No CSS change.
+- No service text change.
+- No contact information change.
+- No floating button change.
+- No visual redesign.
 
 ## v1.0.2 — LLC Name Update
 

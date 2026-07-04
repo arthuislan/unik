@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Thank You | Unik Naples</title>
+  <meta name="description" content="Thank you for contacting Unik Naples. We received your quote request and will respond soon." />
+  <meta name="robots" content="noindex, follow" />
+  <link rel="canonical" href="https://uniknaples.com/thank-you.html" />
+  <link rel="icon" href="/favicon.ico" sizes="any" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/images/favicon-16x16.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/images/apple-touch-icon.png" />
+  <link rel="manifest" href="/site.webmanifest" />
+  <meta name="theme-color" content="#DD0AA1" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Ubuntu:wght@400;500;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --pink: #DD0AA1;
+      --soft-pink: #CCADC6;
+      --light: #E5E5E5;
+      --black: #000000;
+      --ink: #171717;
+      --muted: #6f6f76;
+      --bg: #fbfaf8;
+      --card: #ffffff;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: Montserrat, Arial, sans-serif;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at top right, rgba(221, 10, 161, .13), transparent 32%),
+        radial-gradient(circle at bottom left, rgba(204, 173, 198, .22), transparent 30%),
+        var(--bg);
+      display: grid;
+      place-items: center;
+      padding: 28px;
+    }
+
+    .page {
+      width: min(980px, 100%);
+      display: grid;
+      gap: 28px;
+      text-align: center;
+    }
+
+    .logo {
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      margin: 0 auto;
+    }
+
+    .logo img {
+      width: min(230px, 60vw);
+      height: auto;
+      display: block;
+    }
+
+    .card {
+      background: rgba(255, 255, 255, .88);
+      border: 1px solid rgba(0, 0, 0, .08);
+      border-radius: 34px;
+      padding: clamp(34px, 6vw, 70px);
+      box-shadow: 0 24px 70px rgba(0, 0, 0, .08);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card::before,
+    .card::after {
+      content: "";
+      position: absolute;
+      width: 260px;
+      height: 140px;
+      border-radius: 999px;
+      background: rgba(221, 10, 161, .09);
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    .card::before { right: -70px; top: -60px; transform: rotate(-18deg); }
+    .card::after { left: -80px; bottom: -70px; transform: rotate(14deg); }
+
+    .content { position: relative; z-index: 1; }
+
+    .check {
+      width: 78px;
+      height: 78px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--pink), #b50082);
+      color: white;
+      font-size: 40px;
+      font-weight: 800;
+      box-shadow: 0 16px 30px rgba(221, 10, 161, .25);
+      margin-bottom: 26px;
+    }
+
+    h1 {
+      font-family: Ubuntu, Montserrat, Arial, sans-serif;
+      font-size: clamp(34px, 6vw, 62px);
+      line-height: .98;
+      margin: 0 0 18px;
+      letter-spacing: -.04em;
+    }
+
+    p {
+      max-width: 660px;
+      margin: 0 auto;
+      color: var(--muted);
+      font-size: clamp(16px, 2vw, 20px);
+      line-height: 1.65;
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 14px;
+      margin-top: 34px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 52px;
+      border-radius: 999px;
+      padding: 0 24px;
+      font-weight: 800;
+      text-decoration: none;
+      transition: transform .2s ease, box-shadow .2s ease;
+    }
+
+    .btn.primary {
+      background: var(--black);
+      color: white;
+      box-shadow: 0 14px 30px rgba(0, 0, 0, .12);
+    }
+
+    .btn.secondary {
+      background: white;
+      color: var(--ink);
+      border: 1px solid rgba(0, 0, 0, .12);
+    }
+
+    .btn:hover { transform: translateY(-2px); }
+
+    .note {
+      font-size: 14px;
+      color: #8a8a91;
+      margin-top: 22px;
+    }
+
+    @media (max-width: 640px) {
+      body { padding: 18px; }
+      .card { border-radius: 26px; }
+      .actions { flex-direction: column; }
+      .btn { width: 100%; }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <a class="logo" href="/" aria-label="Unik Naples home">
+      <img src="assets/images/unik-logo.svg" alt="Unik Naples logo" />
+    </a>
+
+    <section class="card" aria-labelledby="thank-title">
+      <div class="content">
+        <div class="check" aria-hidden="true">✓</div>
+        <h1 id="thank-title" data-copy="title">Thank you.</h1>
+        <p data-copy="message">Your quote request was received successfully. A member of the Unik Naples team will review your message and contact you as soon as possible.</p>
+
+        <div class="actions">
+          <a class="btn primary" href="/" data-copy="home">Return to home</a>
+          <a class="btn secondary" href="tel:+19412643819" data-copy="call">Call now</a>
+        </div>
+
+        <p class="note" data-copy="note">UNIK CLEANING PERSONAL CARE AND ORGANIZATION LLC. • Naples, Florida</p>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    const language = localStorage.getItem('unikLang') || 'en';
+    const copy = {
+      en: {
+        title: 'Thank you.',
+        message: 'Your quote request was received successfully. A member of the Unik Naples team will review your message and contact you as soon as possible.',
+        home: 'Return to home',
+        call: 'Call now',
+        note: 'UNIK CLEANING PERSONAL CARE AND ORGANIZATION LLC. • Naples, Florida'
+      },
+      es: {
+        title: 'Gracias.',
+        message: 'Su solicitud de presupuesto fue recibida correctamente. Un miembro del equipo de Unik Naples revisará su mensaje y se comunicará con usted lo antes posible.',
+        home: 'Volver al inicio',
+        call: 'Llamar ahora',
+        note: 'UNIK CLEANING PERSONAL CARE AND ORGANIZATION LLC. • Naples, Florida'
+      },
+      pt: {
+        title: 'Obrigado.',
+        message: 'Sua solicitação de orçamento foi recebida com sucesso. Um membro da equipe Unik Naples vai revisar sua mensagem e entrar em contato o mais breve possível.',
+        home: 'Voltar ao início',
+        call: 'Ligar agora',
+        note: 'UNIK CLEANING PERSONAL CARE AND ORGANIZATION LLC. • Naples, Florida'
+      }
+    };
+
+    const selected = copy[language] || copy.en;
+    document.documentElement.lang = language === 'pt' ? 'pt-BR' : language;
+    document.querySelectorAll('[data-copy]').forEach((element) => {
+      const key = element.getAttribute('data-copy');
+      if (selected[key]) element.textContent = selected[key];
+    });
+  </script>
+</body>
+</html>

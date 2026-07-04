@@ -1,45 +1,40 @@
-# Unik Naples Website
+# Unik Naples Website Version
 
 ## Current Version
 
-**v1.0.3 — Favicon Update**
+**v1.0.3 — Professional Thank-You Page and Favicon Update**
 
-## Change Type
+## Release Type
 
-Patch release.
+Minor patch release.
 
-## What changed
+## Scope
 
-- Replaced the website favicon with the new approved minimal Unik icon.
-- Added browser-ready favicon sizes for desktop and mobile compatibility.
-- Updated only the favicon references in the HTML head.
+This release updates the form completion flow and the favicon identity assets only.
 
-## What did not change
+## Files intentionally changed
 
-- No layout changes.
-- No spacing changes.
-- No CSS changes.
-- No JavaScript changes.
-- No form logic changes.
-- No copy/text changes.
-- No structural content changes.
+- `index.html`
+- `assets/js/script.js`
+- `thank-you.html`
+- `favicon.ico`
+- `assets/images/favicon.png`
+- `assets/images/favicon-16x16.png`
+- `assets/images/favicon-32x32.png`
+- `assets/images/apple-touch-icon.png`
+- `assets/images/android-chrome-192x192.png`
+- `assets/images/android-chrome-512x512.png`
+- `site.webmanifest`
+- `.gitignore`
+- `README.md`
+- `CHANGELOG.md`
+- `VERSION.md`
 
-## Previous versions
+## Protected areas
 
-### v1.0.2 — LLC Name Update
-
-- Replaced the public label and link preview text “Professional Cleaning Services” with “UNIK CLEANING PERSONAL CARE AND ORGANIZATION LLC.”
-
-### v1.0.1 — Form Feedback Fix
-
-- Added form submission feedback.
-- Added success confirmation after sending.
-- Added temporary sending state on the submit button.
-- No visual layout changes.
-
-### v1.0.0 — Approved Refined Version
-
-- Approved refined layout.
-- Quote panel refined.
-- Multilingual support.
-- Form validation baseline.
+- Main page layout preserved.
+- CSS preserved.
+- Service sections preserved.
+- Header preserved.
+- Contact information preserved.
+- Floating contact buttons preserved.
