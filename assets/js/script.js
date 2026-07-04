@@ -29,8 +29,8 @@
       'form.phone': 'Phone', 'form.email': 'Email', 'form.emailPlaceholder': 'name@email.com',
       'form.service': 'Service Needed', 'form.message': 'Message', 'form.messagePlaceholder': 'Tell us what you need',
       'form.security': 'To avoid spam, this form checks the phone, email and message before sending.',
-      'form.submit': 'Send Quote Request', 'form.sending': 'Sending...', 'form.cancel': 'Cancel and edit', 'form.submitError': 'We could not send your request right now. Please try again or contact us directly by phone, WhatsApp or email.',
-      'form.successTitle': 'Thank you. Your request was sent successfully.', 'form.successText': 'We received your information and will contact you soon.', 'form.errorTitle': 'Submission not completed.', 'form.cancelled': 'Submission cancelled. You can review your information and send it when you are ready.',
+      'form.submit': 'Send Quote Request', 'form.sending': 'Sending your request...', 'form.cancel': 'Cancel & Edit', 'form.processingTitle': 'Preparing your request...', 'form.processingText': 'Please wait while we securely prepare your information for our team. You may cancel and edit before it is sent.', 'form.submitError': 'We could not send your request right now. Please try again or contact us directly by phone, WhatsApp or email.',
+      'form.successTitle': 'Thank you! Your request has been sent successfully.', 'form.successText': 'Our team will review your information carefully and contact you as soon as possible by phone or email. Thank you for choosing UNIK Cleaning Personal Care and Organization LLC.', 'form.errorTitle': 'Submission not completed.', 'form.cancelled': 'Submission cancelled. You can review your information and send it when you are ready.',
       'thank.title': 'Thank you.', 'thank.text': 'Your request was sent successfully.', 'thank.back': 'Back to Unik Naples',
       'footer.text': 'UNIK CLEANING PERSONAL CARE AND ORGANIZATION LLC. in Naples, Florida.',
       'footer.copy': '© 2026 Unik Naples. All rights reserved.',
@@ -69,8 +69,8 @@
       'form.phone': 'Teléfono', 'form.email': 'Correo electrónico', 'form.emailPlaceholder': 'nombre@email.com',
       'form.service': 'Servicio necesario', 'form.message': 'Mensaje', 'form.messagePlaceholder': 'Cuéntenos lo que necesita',
       'form.security': 'Para evitar spam, este formulario verifica el teléfono, el correo electrónico y el mensaje antes de enviar.',
-      'form.submit': 'Enviar solicitud', 'form.sending': 'Enviando...', 'form.cancel': 'Cancelar y editar', 'form.submitError': 'No pudimos enviar su solicitud en este momento. Inténtelo nuevamente o contáctenos directamente por teléfono, WhatsApp o correo electrónico.',
-      'form.successTitle': 'Gracias. Su solicitud fue enviada correctamente.', 'form.successText': 'Recibimos su información y nos pondremos en contacto pronto.', 'form.errorTitle': 'Envío no completado.', 'form.cancelled': 'Envío cancelado. Puede revisar su información y enviarla cuando esté listo.',
+      'form.submit': 'Enviar solicitud', 'form.sending': 'Enviando su solicitud...', 'form.cancel': 'Cancelar y editar', 'form.processingTitle': 'Preparando su solicitud...', 'form.processingText': 'Espere mientras preparamos de forma segura su información para nuestro equipo. Puede cancelar y editar antes de enviarla.', 'form.submitError': 'No pudimos enviar su solicitud en este momento. Inténtelo nuevamente o contáctenos directamente por teléfono, WhatsApp o correo electrónico.',
+      'form.successTitle': '¡Gracias! Su solicitud fue enviada correctamente.', 'form.successText': 'Nuestro equipo revisará su información cuidadosamente y se comunicará con usted lo antes posible por teléfono o correo electrónico. Gracias por elegir UNIK Cleaning Personal Care and Organization LLC.', 'form.errorTitle': 'Envío no completado.', 'form.cancelled': 'Envío cancelado. Puede revisar su información y enviarla cuando esté listo.',
       'thank.title': 'Gracias.', 'thank.text': 'Su solicitud fue enviada correctamente.', 'thank.back': 'Volver a Unik Naples',
       'footer.text': 'Servicios profesionales de limpieza en Naples, Florida.',
       'footer.copy': '© 2026 Unik Naples. Todos los derechos reservados.',
@@ -109,8 +109,8 @@
       'form.phone': 'Telefone', 'form.email': 'E-mail', 'form.emailPlaceholder': 'nome@email.com',
       'form.service': 'Serviço necessário', 'form.message': 'Mensagem', 'form.messagePlaceholder': 'Conte o que você precisa',
       'form.security': 'Para evitar spam, este formulário verifica telefone, e-mail e mensagem antes do envio.',
-      'form.submit': 'Enviar solicitação', 'form.sending': 'Enviando...', 'form.cancel': 'Cancelar e editar', 'form.submitError': 'Não conseguimos enviar sua solicitação agora. Tente novamente ou entre em contato diretamente por telefone, WhatsApp ou e-mail.',
-      'form.successTitle': 'Obrigado. Sua solicitação foi enviada com sucesso.', 'form.successText': 'Recebemos suas informações e entraremos em contato em breve.', 'form.errorTitle': 'Envio não concluído.', 'form.cancelled': 'Envio cancelado. Você pode revisar suas informações e enviar quando estiver pronto.',
+      'form.submit': 'Enviar solicitação', 'form.sending': 'Enviando sua solicitação...', 'form.cancel': 'Cancelar e editar', 'form.processingTitle': 'Preparando sua solicitação...', 'form.processingText': 'Aguarde enquanto preparamos suas informações com segurança para nossa equipe. Você pode cancelar e editar antes do envio.', 'form.submitError': 'Não conseguimos enviar sua solicitação agora. Tente novamente ou entre em contato diretamente por telefone, WhatsApp ou e-mail.',
+      'form.successTitle': 'Obrigado! Sua solicitação foi enviada com sucesso.', 'form.successText': 'Nossa equipe analisará suas informações com cuidado e entrará em contato o mais breve possível por telefone ou e-mail. Obrigado por escolher a UNIK Cleaning Personal Care and Organization LLC.', 'form.errorTitle': 'Envio não concluído.', 'form.cancelled': 'Envio cancelado. Você pode revisar suas informações e enviar quando estiver pronto.',
       'thank.title': 'Obrigado.', 'thank.text': 'Sua solicitação foi enviada com sucesso.', 'thank.back': 'Voltar para Unik Naples',
       'footer.text': 'Serviços profissionais de limpeza em Naples, Florida.',
       'footer.copy': '© 2026 Unik Naples. Todos os direitos reservados.',
@@ -229,22 +229,28 @@
   const feedbackTitle = document.querySelector('#form-feedback-title');
   const feedbackText = document.querySelector('#form-feedback-text');
   let activeRequestController = null;
+  let pendingSubmitTimer = null;
+  const PRE_SEND_DELAY_MS = 20000;
 
   function showFeedback(type, title, text) {
     if (!feedbackPanel) return;
-    feedbackPanel.classList.remove('success', 'error', 'neutral', 'visible');
+    feedbackPanel.classList.remove('success', 'error', 'neutral', 'processing', 'visible');
     feedbackPanel.classList.add(type, 'visible');
     feedbackPanel.hidden = false;
     if (feedbackTitle) feedbackTitle.textContent = title;
     if (feedbackText) feedbackText.textContent = text;
     feedbackPanel.setAttribute('tabindex', '-1');
-    feedbackPanel.focus({ preventScroll: true });
-    feedbackPanel.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    if (type === 'processing') {
+      feedbackPanel.setAttribute('aria-busy', 'true');
+    } else {
+      feedbackPanel.removeAttribute('aria-busy');
+    }
   }
 
   function hideFeedback() {
     if (!feedbackPanel) return;
-    feedbackPanel.classList.remove('visible', 'success', 'error', 'neutral');
+    feedbackPanel.classList.remove('visible', 'success', 'error', 'neutral', 'processing');
+    feedbackPanel.removeAttribute('aria-busy');
     feedbackPanel.hidden = true;
   }
 
@@ -263,12 +269,39 @@
     }
   }
 
+  function clearPendingSubmit() {
+    if (pendingSubmitTimer) {
+      clearTimeout(pendingSubmitTimer);
+      pendingSubmitTimer = null;
+    }
+  }
+
+  function delayBeforeSending(signal) {
+    return new Promise((resolve, reject) => {
+      if (signal.aborted) {
+        reject(new DOMException('Submission cancelled', 'AbortError'));
+        return;
+      }
+
+      pendingSubmitTimer = setTimeout(() => {
+        pendingSubmitTimer = null;
+        resolve();
+      }, PRE_SEND_DELAY_MS);
+
+      signal.addEventListener('abort', () => {
+        clearPendingSubmit();
+        reject(new DOMException('Submission cancelled', 'AbortError'));
+      }, { once: true });
+    });
+  }
+
   if (cancelButton) {
     cancelButton.addEventListener('click', function () {
       if (activeRequestController) {
         activeRequestController.abort();
         activeRequestController = null;
       }
+      clearPendingSubmit();
       setSubmitting(false);
       showFeedback('neutral', t('form.cancel'), t('form.cancelled'));
     });
@@ -282,17 +315,20 @@
       return;
     }
 
-    const originalPhone = fields.phone.value;
-    let digits = digitsOnly(fields.phone.value);
-    if (digits.length === 10) fields.phone.value = `+1${digits}`;
-
-    const formData = new FormData(form);
-    fields.phone.value = formatUSPhone(originalPhone);
-
     activeRequestController = new AbortController();
     setSubmitting(true);
+    showFeedback('processing', t('form.processingTitle'), t('form.processingText'));
 
     try {
+      await delayBeforeSending(activeRequestController.signal);
+
+      const originalPhone = fields.phone.value;
+      let digits = digitsOnly(fields.phone.value);
+      if (digits.length === 10) fields.phone.value = `+1${digits}`;
+
+      const formData = new FormData(form);
+      fields.phone.value = formatUSPhone(originalPhone);
+
       const response = await fetch(form.action, {
         method: 'POST',
         body: formData,
@@ -310,6 +346,7 @@
         showFeedback('error', t('form.errorTitle'), t('form.submitError'));
       }
     } finally {
+      clearPendingSubmit();
       activeRequestController = null;
       setSubmitting(false);
     }

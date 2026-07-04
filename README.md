@@ -1,38 +1,45 @@
 # Unik Naples Website
 
-Official website for Unik Naples.
+Official website for **UNIK Cleaning Personal Care and Organization LLC.**
 
-## Current Version
+## Current version
 
-v1.0.5 — Cancel Button Visibility Fix
+**v1.0.5 — Premium Form Experience**
 
-## Deployment
+## Release summary
 
-This site is deployed with GitHub and Cloudflare Pages.
+This version improves the quote form feedback flow while preserving the approved layout and visual identity.
 
-## Version policy
+## v1.0.5 checklist
 
-Every release must follow the professional Unik workflow:
-
-1. Use the latest approved project version as the base.
-2. Make only the requested change.
-3. Preserve unrelated layout, structure, styling and functionality.
-4. Update `README.md`, `CHANGELOG.md` and `VERSION.md`.
-5. Audit the package before approval.
-
-## v1.0.5 Checklist
-
-- [x] Based on v1.0.4.
-- [x] Fixed only the cancel button visibility issue.
-- [x] Preserved `index.html`.
-- [x] Preserved `assets/js/script.js`.
-- [x] Preserved the approved main layout.
-- [x] Preserved favicon and thank-you page.
-- [x] Updated documentation files.
+- [x] Main layout preserved.
+- [x] Header preserved.
+- [x] Quote panel layout preserved.
+- [x] Floating buttons preserved.
+- [x] Favicon system preserved.
+- [x] 20-second pre-send preparation flow added.
+- [x] Premium white loading/progress effect added to submit button.
+- [x] Processing message appears above the submit button.
+- [x] `Cancel & Edit` allows the user to stop the pending send and preserve typed information.
+- [x] Success message appears above the submit button after successful submission.
+- [x] No return/home or request-another-quote buttons added.
+- [x] Documentation updated.
 
 ## Files changed in v1.0.5
 
+- `assets/js/script.js`
 - `assets/css/style.css`
 - `README.md`
 - `CHANGELOG.md`
 - `VERSION.md`
+
+## Deployment
+
+This project is deployed with GitHub and Cloudflare Pages.
+
+After replacing the files in the local repository:
+
+1. Review changes in GitHub Desktop.
+2. Commit to `main`.
+3. Push origin.
+4. Cloudflare Pages will deploy automatically.

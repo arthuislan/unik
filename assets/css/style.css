@@ -637,24 +637,37 @@
   border-color: rgba(221, 10, 161, 0.18);
   background: linear-gradient(135deg, rgba(253, 242, 248, 0.98), rgba(255, 255, 255, 0.96));
 }
+.form-feedback.processing {
+  position: relative;
+  overflow: hidden;
+  padding-bottom: 24px;
+  border-color: rgba(221, 10, 161, 0.20);
+  background: linear-gradient(135deg, rgba(253, 242, 248, 0.98), rgba(255, 255, 255, 0.97));
+}
+.form-feedback.processing::after {
+  content: "";
+  position: absolute;
+  left: 18px;
+  right: 18px;
+  bottom: 12px;
+  height: 3px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, var(--pink), rgba(255, 255, 255, 0.92));
+  transform-origin: left center;
+  animation: feedbackProgress 20s linear forwards;
+}
 .form-actions {
   display: grid;
-  grid-template-columns: 1fr;
+  grid-template-columns: 1fr auto;
   gap: 12px;
-  align-items: stretch;
+  align-items: center;
 }
 .form-actions .submit {
   width: 100%;
 }
-.cancel-submit[hidden] {
-  display: none !important;
-}
 .cancel-submit {
-  width: fit-content;
-  min-width: 168px;
-  max-width: 100%;
-  justify-self: center;
-  padding-inline: 20px;
+  min-width: 146px;
+  padding-inline: 18px;
   color: var(--dark);
   background: #fff;
   border: 1px solid rgba(17, 17, 17, 0.12);
@@ -673,13 +686,26 @@
   justify-content: center;
   gap: 10px;
 }
+.submit.is-loading::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  transform: scaleX(0);
+  transform-origin: left center;
+  background: rgba(255, 255, 255, 0.18);
+  animation: buttonProgress 20s linear forwards;
+}
 .submit.is-loading::after {
   content: "";
   position: absolute;
   inset: 0;
-  transform: translateX(-110%);
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.24), transparent);
-  animation: buttonSheen 1.05s ease-in-out infinite;
+  transform: translateX(-120%);
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.34), transparent);
+  animation: buttonSheen 2.4s ease-in-out infinite;
+}
+.submit.is-loading span {
+  position: relative;
+  z-index: 1;
 }
 .button-loader {
   width: 17px;
@@ -693,6 +719,13 @@
 @keyframes buttonSpin {
   to { transform: rotate(360deg); }
 }
+@keyframes buttonProgress {
+  to { transform: scaleX(1); }
+}
+@keyframes feedbackProgress {
+  from { transform: scaleX(0); }
+  to { transform: scaleX(1); }
+}
 @keyframes buttonSheen {
   to { transform: translateX(110%); }
 }
@@ -701,6 +734,9 @@
   to { opacity: 1; transform: translateY(0); }
 }
 @media (max-width: 640px) {
+  .form-actions {
+    grid-template-columns: 1fr;
+  }
   .cancel-submit {
     width: 100%;
   }
