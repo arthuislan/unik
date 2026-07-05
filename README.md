@@ -4,7 +4,7 @@ Official website for **Unik Cleaning Personal Care and Organization LLC.**
 
 ## Current Version
 
-**v1.2.2 — Email Dark/Light Logo Refinement**
+**v1.2.3 — Email CTA Removal & Dark Mode Text Refinement**
 
 ## Stable Baseline
 
@@ -20,7 +20,7 @@ The professional email infrastructure remains active:
 6. The site displays the approved success message.
 
 
-## What changed in v1.2.2
+## What changed in v1.2.3
 
 - Refined the email header logo for light and dark mode.
 - Kept the `U` in Unik pink.
@@ -80,7 +80,7 @@ The Resend API key must never be committed to GitHub. It must be stored only ins
 
 ## Deployment notes
 
-Deploy first to a preview branch such as `test-v1.2.2`.
+Deploy first to a preview branch such as `test-v1.2.3`.
 
 Before merging to `main`, verify:
 

@@ -98,7 +98,6 @@ function clientHtmlEmail({ name, language, requestId }) {
       title: 'Your request has been received.',
       body: 'Thank you for contacting Unik Naples. Our team will review your information carefully and contact you as soon as possible by phone or email.',
       reference: 'Reference ID',
-      button: 'Visit our website',
       note: 'Please keep this email for your records.'
     },
     es: {
@@ -106,7 +105,6 @@ function clientHtmlEmail({ name, language, requestId }) {
       title: 'Su solicitud fue recibida.',
       body: 'Gracias por contactar a Unik Naples. Nuestro equipo revisará su información con cuidado y se comunicará pronto por teléfono o correo electrónico.',
       reference: 'ID de referencia',
-      button: 'Visitar nuestro sitio',
       note: 'Guarde este correo para sus registros.'
     },
     pt: {
@@ -114,7 +112,6 @@ function clientHtmlEmail({ name, language, requestId }) {
       title: 'Sua solicitação foi recebida.',
       body: 'Obrigado por entrar em contato com a Unik Naples. Nossa equipe analisará suas informações com cuidado e entrará em contato em breve por telefone ou e-mail.',
       reference: 'ID de referência',
-      button: 'Acessar o site',
       note: 'Guarde este e-mail para seus registros.'
     }
   }[language] || null;
@@ -123,7 +120,6 @@ function clientHtmlEmail({ name, language, requestId }) {
     title: 'Your request has been received.',
     body: 'Thank you for contacting Unik Naples. Our team will review your information carefully and contact you as soon as possible by phone or email.',
     reference: 'Reference ID',
-    button: 'Visit our website',
     note: 'Please keep this email for your records.'
   };
 
@@ -139,12 +135,12 @@ function clientHtmlEmail({ name, language, requestId }) {
       .email-header { background:linear-gradient(135deg,#11161c 0%,#121820 58%,#2d1728 100%) !important; border-bottom-color:#313942 !important; }
       .email-copy, .email-title { color:#f6f7f8 !important; }
       .email-muted { color:#b9bec6 !important; }
+      .email-subtitle, .email-reference-label, .email-footer-brand { color:rgba(255,255,255,.60) !important; }
       .email-reference { background:#201820 !important; border-color:#4a3344 !important; }
       .email-reference-value { color:#ffffff !important; }
       .email-footer { background:#11161c !important; color:#b9bec6 !important; border-top-color:#DD0AA1 !important; }
       .email-brand-word { color:#f6f7f8 !important; }
       .email-brand-black { color:#f6f7f8 !important; }
-      .email-button { background:#DD0AA1 !important; color:#ffffff !important; }
     }
   </style>
 </head>
@@ -153,18 +149,17 @@ function clientHtmlEmail({ name, language, requestId }) {
     <div class="email-card" style="background:#ffffff;border-radius:28px;overflow:hidden;border:1px solid #e8e2e6;box-shadow:0 18px 50px rgba(0,0,0,.07);">
       <div class="email-header" style="padding:36px 36px 20px;background:linear-gradient(135deg,#fff 0%,#fff 58%,#f7edf4 100%);border-top:8px solid #DD0AA1;border-bottom:1px solid #e8e2e6;">
         <div style="font-size:38px;line-height:1;font-weight:800;letter-spacing:-1px;white-space:nowrap;"><span style="color:#DD0AA1;">U</span><span class="email-brand-word" style="color:#111;">nik</span> <span class="email-brand-black" style="color:#111;">Naples</span></div>
-        <div style="margin-top:10px;color:#DD0AA1;font-size:12px;letter-spacing:.08em;text-transform:uppercase;font-weight:700;">Cleaning • Personal Care • Organization</div>
+        <div class="email-subtitle" style="margin-top:10px;color:#DD0AA1;font-size:12px;letter-spacing:.08em;text-transform:uppercase;font-weight:700;">Cleaning • Personal Care • Organization</div>
       </div>
       <div style="padding:30px 36px 36px;">
         <p class="email-copy" style="font-size:16px;margin:0 0 14px;color:#333;">${text.greeting}</p>
         <h1 class="email-title" style="font-size:30px;line-height:1.12;margin:0 0 18px;color:#111;letter-spacing:-.02em;">${text.title}</h1>
         <p class="email-copy" style="font-size:16px;line-height:1.7;margin:0 0 24px;color:#333;">${text.body}</p>
-        ${safeRequestId ? `<div class="email-reference" style="margin:0 0 26px;padding:16px 18px;background:#f7edf4;border:1px solid #ead8e5;border-radius:18px;"><div style="font-size:12px;text-transform:uppercase;letter-spacing:.1em;color:#DD0AA1;font-weight:800;">${text.reference}</div><div class="email-reference-value" style="font-size:18px;color:#111;font-weight:800;margin-top:6px;">${safeRequestId}</div></div>` : ''}
-        <a class="email-button" href="${SITE_URL}" style="display:inline-block;background:#DD0AA1;color:#fff;text-decoration:none;padding:14px 22px;border-radius:999px;font-weight:800;">${text.button}</a>
-        <p class="email-muted" style="font-size:13px;line-height:1.55;margin:22px 0 0;color:#777;">${text.note}</p>
+        ${safeRequestId ? `<div class="email-reference" style="margin:0 0 26px;padding:16px 18px;background:#f7edf4;border:1px solid #ead8e5;border-radius:18px;"><div class="email-reference-label" style="font-size:12px;text-transform:uppercase;letter-spacing:.1em;color:#DD0AA1;font-weight:800;">${text.reference}</div><div class="email-reference-value" style="font-size:18px;color:#111;font-weight:800;margin-top:6px;">${safeRequestId}</div></div>` : ''}
+        <p class="email-muted" style="font-size:13px;line-height:1.55;margin:0;color:#777;">${text.note}</p>
       </div>
       <div class="email-footer" style="background:#f2edf1;padding:24px 36px;color:#333;font-size:14px;line-height:1.65;border-top:1px solid #DD0AA1;text-align:center;">
-        <strong style="color:#DD0AA1;">Unik Naples Cleaning Personal Care and Organization</strong><br>
+        <strong class="email-footer-brand" style="color:#DD0AA1;">Unik Naples Cleaning Personal Care and Organization</strong><br>
         Naples, Florida<br>
         <a href="mailto:${COMPANY_EMAIL}" style="color:#DD0AA1;text-decoration:none;">${COMPANY_EMAIL}</a> · <a href="${SITE_URL}" style="color:#DD0AA1;text-decoration:none;">uniknaples.com</a>
       </div>

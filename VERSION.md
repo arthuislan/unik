@@ -1,10 +1,10 @@
 # Unik Naples Version
 
-Current version: **v1.2.2**
+Current version: **v1.2.3**
 
 ## Release
 
-**v1.2.2 — Email Dark/Light Logo Refinement**
+**v1.2.3 — Email CTA Removal & Dark Mode Text Refinement**
 
 ## Status
 
@@ -12,13 +12,13 @@ Ready for Preview validation.
 
 ## Scope
 
-This patch refines the email header logo color behavior for light and dark mode while preserving the professional email presentation introduced in v1.2.0.
+This patch refines only the customer confirmation email presentation based on approved visual feedback.
 
-- Sender name changed from `UNIK Cleaning` to `Unik Naples`.
-- Client e-mail subject changed to use `Unik Naples`.
-- Client e-mail header adjusted for light and dark mode.
-- Brand text adjusted so `Unik` appears joined, not visually separated.
-- Footer icons removed / not included.
+- Removed the **Visit our website** button from the customer confirmation email in both light and dark modes.
+- Preserved the light-mode design, except for the approved button removal.
+- In dark mode, changed the header subtitle text to white at 60% opacity.
+- In dark mode, changed the reference label text to white at 60% opacity.
+- In dark mode, changed the footer company name to white at 60% opacity.
 
 ## Preserved
 
@@ -28,3 +28,4 @@ This patch refines the email header logo color behavior for light and dark mode 
 - Cloudflare Function route `/api/contact`.
 - Resend integration.
 - Reference ID generation.
+- Sender name as `Unik Naples`.

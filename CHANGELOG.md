@@ -1,5 +1,15 @@
 # Changelog
 
+## v1.2.3 — Email CTA Removal & Dark Mode Text Refinement
+
+- Removed the customer confirmation email **Visit our website** button in both light and dark modes.
+- Preserved the light-mode layout and colors except for the approved button removal.
+- Adjusted dark-mode header subtitle text to white at 60% opacity.
+- Adjusted dark-mode reference label text to white at 60% opacity.
+- Adjusted dark-mode footer company name to white at 60% opacity.
+- Preserved `Unik Naples` sender name, Resend integration, Cloudflare Function routing, and Reference ID generation.
+- Cache query strings updated to `v=1.2.3`.
+
 ## v1.2.2 — Email Dark/Light Logo Refinement
 
 - Adjusted the email header logo for both light and dark mode.
