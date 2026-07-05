@@ -4,7 +4,7 @@ Official website for **Unik Cleaning Personal Care and Organization LLC.**
 
 ## Current Version
 
-**v1.2.0 — Professional Contact Experience**
+**v1.2.1 — Email Brand Header Refinement**
 
 ## Stable Baseline
 
@@ -18,6 +18,18 @@ The professional email infrastructure remains active:
 4. Resend sends the internal notification to `contact@uniknaples.com`.
 5. Resend sends the client confirmation email.
 6. The site displays the approved success message.
+
+
+## What changed in v1.2.1
+
+### Email Brand Header Refinement
+
+- Customer e-mail sender is now **Unik Naples**.
+- Customer e-mail subject now uses **Unik Naples**.
+- The customer e-mail header was adjusted for light and dark mode.
+- The word **Unik** appears joined, not visually separated.
+- The previously proposed icon/value footer was not included.
+- Website layout and form infrastructure were preserved.
 
 ## What changed in v1.2.0
 
@@ -59,7 +71,7 @@ The Resend API key must never be committed to GitHub. It must be stored only ins
 
 ## Deployment notes
 
-Deploy first to a preview branch such as `test-v1.2.0`.
+Deploy first to a preview branch such as `test-v1.2.1`.
 
 Before merging to `main`, verify:
 

@@ -1,5 +1,28 @@
 # Changelog
 
+## v1.2.1 — Email Brand Header Refinement
+
+### Changed
+- Updated the customer auto-response sender display name to **Unik Naples**.
+- Updated customer auto-response subjects to use **Unik Naples** instead of **UNIK Cleaning**.
+- Refined the customer e-mail header so **Unik** appears as one joined brand word, followed by **Naples**.
+- Improved customer e-mail colors for light and dark mode compatibility.
+- Removed the icon-style value footer from the approved email direction; the footer now remains simple and institutional.
+
+### Preserved
+- Website visual layout.
+- CSS layout.
+- Form behavior.
+- Resend API integration.
+- Cloudflare Pages Function route `/api/contact`.
+- Internal quote request e-mail pipeline.
+- Reference ID generation.
+
+### Audit
+- `functions/api/contact.js` syntax verified.
+- `assets/js/script.js` syntax verified.
+- Cache query strings updated to `v=1.2.1`.
+
 ## v1.2.0 — Professional Contact Experience
 
 ### Status
