@@ -1,5 +1,16 @@
 # Changelog
 
+## v1.2.2 — Email Dark/Light Logo Refinement
+
+- Adjusted the email header logo for both light and dark mode.
+- Preserved the pink `U` in Unik.
+- Changed `nik` to black in light mode and white in dark mode.
+- Kept `Naples` aligned with the same light/dark behavior.
+- Preserved sender name as `Unik Naples`.
+- Preserved footer without feature icons.
+- No change to website layout, Cloudflare Functions routing, or Resend configuration.
+- Cache query strings updated to `v=1.2.2`.
+
 ## v1.2.1 — Email Brand Header Refinement
 
 ### Changed

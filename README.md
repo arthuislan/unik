@@ -4,7 +4,7 @@ Official website for **Unik Cleaning Personal Care and Organization LLC.**
 
 ## Current Version
 
-**v1.2.1 — Email Brand Header Refinement**
+**v1.2.2 — Email Dark/Light Logo Refinement**
 
 ## Stable Baseline
 
@@ -19,6 +19,15 @@ The professional email infrastructure remains active:
 5. Resend sends the client confirmation email.
 6. The site displays the approved success message.
 
+
+## What changed in v1.2.2
+
+- Refined the email header logo for light and dark mode.
+- Kept the `U` in Unik pink.
+- Set `nik` to black in light mode and white in dark mode.
+- Kept `Naples` black in light mode and white in dark mode.
+- Preserved the cleaned footer without feature icons.
+- No website layout or Resend infrastructure changes.
 
 ## What changed in v1.2.1
 
@@ -71,7 +80,7 @@ The Resend API key must never be committed to GitHub. It must be stored only ins
 
 ## Deployment notes
 
-Deploy first to a preview branch such as `test-v1.2.1`.
+Deploy first to a preview branch such as `test-v1.2.2`.
 
 Before merging to `main`, verify:
 

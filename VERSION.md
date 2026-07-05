@@ -1,10 +1,10 @@
 # Unik Naples Version
 
-Current version: **v1.2.1**
+Current version: **v1.2.2**
 
 ## Release
 
-**v1.2.1 — Email Brand Header Refinement**
+**v1.2.2 — Email Dark/Light Logo Refinement**
 
 ## Status
 
@@ -12,7 +12,7 @@ Ready for Preview validation.
 
 ## Scope
 
-This patch refines only the professional email presentation introduced in v1.2.0.
+This patch refines the email header logo color behavior for light and dark mode while preserving the professional email presentation introduced in v1.2.0.
 
 - Sender name changed from `UNIK Cleaning` to `Unik Naples`.
 - Client e-mail subject changed to use `Unik Naples`.

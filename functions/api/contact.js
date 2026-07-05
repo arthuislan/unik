@@ -142,6 +142,7 @@ function clientHtmlEmail({ name, language, requestId }) {
       .email-reference { background:#201820 !important; border-color:#4a3344 !important; }
       .email-reference-value { color:#ffffff !important; }
       .email-footer { background:#11161c !important; color:#b9bec6 !important; border-top-color:#DD0AA1 !important; }
+      .email-brand-word { color:#f6f7f8 !important; }
       .email-brand-black { color:#f6f7f8 !important; }
       .email-button { background:#DD0AA1 !important; color:#ffffff !important; }
     }
@@ -151,7 +152,7 @@ function clientHtmlEmail({ name, language, requestId }) {
   <div style="max-width:660px;margin:0 auto;padding:34px 18px;">
     <div class="email-card" style="background:#ffffff;border-radius:28px;overflow:hidden;border:1px solid #e8e2e6;box-shadow:0 18px 50px rgba(0,0,0,.07);">
       <div class="email-header" style="padding:36px 36px 20px;background:linear-gradient(135deg,#fff 0%,#fff 58%,#f7edf4 100%);border-top:8px solid #DD0AA1;border-bottom:1px solid #e8e2e6;">
-        <div style="font-size:38px;line-height:1;font-weight:800;letter-spacing:-1px;white-space:nowrap;"><span style="color:#DD0AA1;">Unik</span> <span class="email-brand-black" style="color:#111;">Naples</span></div>
+        <div style="font-size:38px;line-height:1;font-weight:800;letter-spacing:-1px;white-space:nowrap;"><span style="color:#DD0AA1;">U</span><span class="email-brand-word" style="color:#111;">nik</span> <span class="email-brand-black" style="color:#111;">Naples</span></div>
         <div style="margin-top:10px;color:#DD0AA1;font-size:12px;letter-spacing:.08em;text-transform:uppercase;font-weight:700;">Cleaning • Personal Care • Organization</div>
       </div>
       <div style="padding:30px 36px 36px;">
