@@ -60,11 +60,15 @@ function isValidUSPhone(value = '') {
 }
 
 function getRequestId() {
+  const now = new Date();
+  const date = now.toISOString().slice(0, 10).replace(/-/g, '');
+  let suffix;
   try {
-    return crypto.randomUUID();
+    suffix = crypto.randomUUID().split('-')[0].toUpperCase();
   } catch (error) {
-    return `unik-${Date.now()}-${Math.random().toString(16).slice(2)}`;
+    suffix = Math.random().toString(16).slice(2, 10).toUpperCase();
   }
+  return `UNIK-${date}-${suffix}`;
 }
 
 function clientSubject(language) {
@@ -73,66 +77,73 @@ function clientSubject(language) {
   return 'We received your request — UNIK Cleaning';
 }
 
-function clientPlainText(name, language) {
+function clientPlainText(name, language, requestId) {
   const safeName = name || 'there';
+  const referenceLine = requestId ? `\nReference ID: ${requestId}\n` : '\n';
   if (language === 'pt') {
-    return `Olá, ${safeName}.\n\nObrigado por entrar em contato com a ${COMPANY_NAME}. Recebemos sua solicitação com sucesso. Nossa equipe analisará suas informações com cuidado e entrará em contato em breve por telefone ou e-mail.\n\nAtenciosamente,\n${COMPANY_NAME}\nNaples, Florida\n${SITE_URL}`;
+    return `Olá, ${safeName}.\n\nObrigado por entrar em contato com a ${COMPANY_NAME}. Recebemos sua solicitação com sucesso.${referenceLine}\nNossa equipe analisará suas informações com cuidado e entrará em contato em breve por telefone ou e-mail.\n\nAtenciosamente,\n${COMPANY_NAME}\nNaples, Florida\n${SITE_URL}`;
   }
   if (language === 'es') {
-    return `Hola, ${safeName}.\n\nGracias por contactar a ${COMPANY_NAME}. Hemos recibido su solicitud correctamente. Nuestro equipo revisará su información con cuidado y se comunicará pronto por teléfono o correo electrónico.\n\nAtentamente,\n${COMPANY_NAME}\nNaples, Florida\n${SITE_URL}`;
+    return `Hola, ${safeName}.\n\nGracias por contactar a ${COMPANY_NAME}. Hemos recibido su solicitud correctamente.${referenceLine}\nNuestro equipo revisará su información con cuidado y se comunicará pronto por teléfono o correo electrónico.\n\nAtentamente,\n${COMPANY_NAME}\nNaples, Florida\n${SITE_URL}`;
   }
-  return `Hello, ${safeName}.\n\nThank you for contacting ${COMPANY_NAME}. We have successfully received your request. Our team will review your information carefully and contact you as soon as possible by phone or email.\n\nKind regards,\n${COMPANY_NAME}\nNaples, Florida\n${SITE_URL}`;
+  return `Hello, ${safeName}.\n\nThank you for contacting ${COMPANY_NAME}. We have successfully received your request.${referenceLine}\nOur team will review your information carefully and contact you as soon as possible by phone or email.\n\nKind regards,\n${COMPANY_NAME}\nNaples, Florida\n${SITE_URL}`;
 }
 
-function clientHtmlEmail({ name, language }) {
+function clientHtmlEmail({ name, language, requestId }) {
   const safeName = escapeHtml(name || 'there');
+  const safeRequestId = escapeHtml(requestId || '');
   const copy = {
     en: {
       greeting: `Hello, ${safeName}.`,
-      title: 'Thank you for contacting UNIK.',
-      body: 'We have successfully received your request. Our team will review your information carefully and contact you as soon as possible by phone or email.',
-      closing: 'Thank you for choosing UNIK Cleaning Personal Care and Organization LLC.',
-      button: 'Visit our website'
+      title: 'Your request has been received.',
+      body: 'Thank you for contacting UNIK. Our team will review your information carefully and contact you as soon as possible by phone or email.',
+      reference: 'Reference ID',
+      button: 'Visit our website',
+      note: 'Please keep this email for your records.'
     },
     es: {
       greeting: `Hola, ${safeName}.`,
-      title: 'Gracias por contactar a UNIK.',
-      body: 'Hemos recibido su solicitud correctamente. Nuestro equipo revisará su información con cuidado y se comunicará pronto por teléfono o correo electrónico.',
-      closing: 'Gracias por elegir UNIK Cleaning Personal Care and Organization LLC.',
-      button: 'Visitar nuestro sitio'
+      title: 'Su solicitud fue recibida.',
+      body: 'Gracias por contactar a UNIK. Nuestro equipo revisará su información con cuidado y se comunicará pronto por teléfono o correo electrónico.',
+      reference: 'ID de referencia',
+      button: 'Visitar nuestro sitio',
+      note: 'Guarde este correo para sus registros.'
     },
     pt: {
       greeting: `Olá, ${safeName}.`,
-      title: 'Obrigado por entrar em contato com a UNIK.',
-      body: 'Recebemos sua solicitação com sucesso. Nossa equipe analisará suas informações com cuidado e entrará em contato em breve por telefone ou e-mail.',
-      closing: 'Obrigado por escolher a UNIK Cleaning Personal Care and Organization LLC.',
-      button: 'Acessar o site'
+      title: 'Sua solicitação foi recebida.',
+      body: 'Obrigado por entrar em contato com a UNIK. Nossa equipe analisará suas informações com cuidado e entrará em contato em breve por telefone ou e-mail.',
+      reference: 'ID de referência',
+      button: 'Acessar o site',
+      note: 'Guarde este e-mail para seus registros.'
     }
   }[language] || null;
   const text = copy || {
     greeting: `Hello, ${safeName}.`,
-    title: 'Thank you for contacting UNIK.',
-    body: 'We have successfully received your request. Our team will review your information carefully and contact you as soon as possible by phone or email.',
-    closing: 'Thank you for choosing UNIK Cleaning Personal Care and Organization LLC.',
-    button: 'Visit our website'
+    title: 'Your request has been received.',
+    body: 'Thank you for contacting UNIK. Our team will review your information carefully and contact you as soon as possible by phone or email.',
+    reference: 'Reference ID',
+    button: 'Visit our website',
+    note: 'Please keep this email for your records.'
   };
 
   return `<!doctype html>
 <html><body style="margin:0;background:#f7f7f7;font-family:Arial,Helvetica,sans-serif;color:#111;">
-  <div style="max-width:640px;margin:0 auto;padding:32px 18px;">
-    <div style="background:#ffffff;border-radius:24px;overflow:hidden;border:1px solid #e5e5e5;box-shadow:0 10px 30px rgba(0,0,0,.05);">
-      <div style="padding:34px 34px 18px;border-top:8px solid #DD0AA1;">
-        <div style="font-size:34px;line-height:1;font-weight:800;letter-spacing:-1px;"><span style="color:#DD0AA1;">U</span>nik</div>
-        <div style="margin-top:8px;color:#666;font-size:13px;letter-spacing:.08em;text-transform:uppercase;">Cleaning • Personal Care • Organization</div>
+  <div style="max-width:660px;margin:0 auto;padding:34px 18px;">
+    <div style="background:#ffffff;border-radius:28px;overflow:hidden;border:1px solid #e8e2e6;box-shadow:0 18px 50px rgba(0,0,0,.07);">
+      <div style="padding:36px 36px 20px;background:linear-gradient(135deg,#fff 0%,#fff 58%,#f7edf4 100%);border-top:8px solid #DD0AA1;">
+        <div style="font-size:38px;line-height:1;font-weight:800;letter-spacing:-1px;"><span style="color:#DD0AA1;">U</span>nik</div>
+        <div style="margin-top:9px;color:#5f565d;font-size:12px;letter-spacing:.11em;text-transform:uppercase;">Cleaning • Personal Care • Organization</div>
       </div>
-      <div style="padding:6px 34px 34px;">
-        <p style="font-size:16px;margin:0 0 14px;">${text.greeting}</p>
-        <h1 style="font-size:28px;line-height:1.15;margin:0 0 18px;color:#111;">${text.title}</h1>
-        <p style="font-size:16px;line-height:1.65;margin:0 0 22px;color:#333;">${text.body}</p>
-        <p style="font-size:16px;line-height:1.65;margin:0 0 26px;color:#333;">${text.closing}</p>
+      <div style="padding:10px 36px 36px;">
+        <p style="font-size:16px;margin:0 0 14px;color:#333;">${text.greeting}</p>
+        <h1 style="font-size:30px;line-height:1.12;margin:0 0 18px;color:#111;letter-spacing:-.02em;">${text.title}</h1>
+        <p style="font-size:16px;line-height:1.7;margin:0 0 24px;color:#333;">${text.body}</p>
+        ${safeRequestId ? `<div style="margin:0 0 26px;padding:16px 18px;background:#f7edf4;border:1px solid #ead8e5;border-radius:18px;"><div style="font-size:12px;text-transform:uppercase;letter-spacing:.1em;color:#76656f;font-weight:700;">${text.reference}</div><div style="font-size:18px;color:#111;font-weight:800;margin-top:6px;">${safeRequestId}</div></div>` : ''}
         <a href="${SITE_URL}" style="display:inline-block;background:#111;color:#fff;text-decoration:none;padding:14px 22px;border-radius:999px;font-weight:700;">${text.button}</a>
+        <p style="font-size:13px;line-height:1.55;margin:22px 0 0;color:#777;">${text.note}</p>
       </div>
-      <div style="background:#f2edf1;padding:24px 34px;color:#333;font-size:14px;line-height:1.6;">
+      <div style="background:#f2edf1;padding:24px 36px;color:#333;font-size:14px;line-height:1.65;">
         <strong>${COMPANY_NAME}</strong><br>
         Naples, Florida<br>
         <a href="mailto:${COMPANY_EMAIL}" style="color:#DD0AA1;text-decoration:none;">${COMPANY_EMAIL}</a> · <a href="${SITE_URL}" style="color:#DD0AA1;text-decoration:none;">uniknaples.com</a>
@@ -153,17 +164,22 @@ function internalHtmlEmail(data, meta) {
     ['Submitted at', meta.submittedAt],
     ['Language', data.language || 'en']
   ];
+  const replyHref = `mailto:${encodeURIComponent(data.email)}?subject=${encodeURIComponent(`Re: Your UNIK quote request ${meta.requestId}`)}`;
   return `<!doctype html>
 <html><body style="margin:0;background:#f7f7f7;font-family:Arial,Helvetica,sans-serif;color:#111;">
-  <div style="max-width:680px;margin:0 auto;padding:28px 16px;">
-    <div style="background:#fff;border-radius:20px;border:1px solid #e5e5e5;overflow:hidden;">
-      <div style="background:#111;padding:24px 28px;color:#fff;">
-        <div style="font-size:20px;font-weight:800;">New Quote Request</div>
-        <div style="color:#CCADC6;margin-top:6px;">Unik Naples Website</div>
+  <div style="max-width:720px;margin:0 auto;padding:30px 16px;">
+    <div style="background:#fff;border-radius:24px;border:1px solid #e5e5e5;overflow:hidden;box-shadow:0 18px 50px rgba(0,0,0,.07);">
+      <div style="background:#111;padding:28px 30px;color:#fff;">
+        <div style="font-size:23px;font-weight:800;letter-spacing:-.01em;">New Quote Request</div>
+        <div style="color:#CCADC6;margin-top:8px;font-weight:700;">${escapeHtml(meta.requestId)}</div>
+      </div>
+      <div style="padding:24px 30px 8px;">
+        <a href="${replyHref}" style="display:inline-block;background:#DD0AA1;color:#fff;text-decoration:none;padding:13px 20px;border-radius:999px;font-weight:800;">Reply to customer</a>
       </div>
       <table role="presentation" style="width:100%;border-collapse:collapse;">
-        ${rows.map(([label, value]) => `<tr><td style="width:150px;padding:16px 22px;border-bottom:1px solid #eee;font-weight:700;color:#555;vertical-align:top;">${escapeHtml(label)}</td><td style="padding:16px 22px;border-bottom:1px solid #eee;white-space:pre-wrap;line-height:1.55;">${escapeHtml(value)}</td></tr>`).join('')}
+        ${rows.map(([label, value]) => `<tr><td style="width:160px;padding:16px 24px;border-bottom:1px solid #eee;font-weight:800;color:#555;vertical-align:top;">${escapeHtml(label)}</td><td style="padding:16px 24px;border-bottom:1px solid #eee;white-space:pre-wrap;line-height:1.6;color:#222;">${escapeHtml(value)}</td></tr>`).join('')}
       </table>
+      <div style="padding:20px 30px 28px;color:#777;font-size:13px;line-height:1.6;">This message was generated by the UNIK website contact form.</div>
     </div>
   </div>
 </body></html>`;
@@ -249,14 +265,14 @@ function buildInternalEmail(cleanData, submittedAt, requestId) {
   };
 }
 
-function buildClientEmail(cleanData) {
+function buildClientEmail(cleanData, requestId) {
   return {
     from: `UNIK Cleaning <${COMPANY_EMAIL}>`,
     to: [cleanData.email],
     reply_to: COMPANY_EMAIL,
     subject: clientSubject(cleanData.language),
-    html: clientHtmlEmail({ name: cleanData.name, language: cleanData.language }),
-    text: clientPlainText(cleanData.name, cleanData.language)
+    html: clientHtmlEmail({ name: cleanData.name, language: cleanData.language, requestId }),
+    text: clientPlainText(cleanData.name, cleanData.language, requestId)
   };
 }
 
@@ -338,7 +354,7 @@ export async function onRequestPost({ request, env }) {
   let clientResult = null;
   let clientEmailSent = false;
   try {
-    clientResult = await sendEmail(env, buildClientEmail(cleanData), 'client', requestId);
+    clientResult = await sendEmail(env, buildClientEmail(cleanData, requestId), 'client', requestId);
     clientEmailSent = true;
   } catch (error) {
     console.error('UNIK client auto-response failed, but internal notification was delivered', {

@@ -1,5 +1,40 @@
 # Changelog
 
+## v1.2.0 — Professional Contact Experience
+
+### Status
+Prepared for Preview QA.
+
+### Objective
+Improve the professional experience around contact requests while preserving the stable Resend + Cloudflare email infrastructure.
+
+### Changed
+- Refined the client confirmation email with a premium UNIK-branded layout.
+- Refined the internal quote request email with clearer hierarchy and a direct reply button.
+- Added a readable public request ID format: `UNIK-YYYYMMDD-XXXXXXXX`.
+- Added the request/reference ID to the website success message.
+- Added the request/reference ID to both e-mail templates.
+- Updated cache query strings to `v=1.2.0`.
+
+### Preserved
+- Approved visual layout.
+- CSS.
+- Form countdown and cancel/edit logic.
+- Floating button behavior.
+- Cloudflare Pages Function route `/api/contact`.
+- Resend API integration and secret model.
+
+### QA Checklist
+- [ ] Deploy to Preview branch.
+- [ ] Submit test form in English.
+- [ ] Submit test form in Portuguese.
+- [ ] Confirm internal email received.
+- [ ] Confirm client email received.
+- [ ] Confirm success message shows reference ID.
+- [ ] Confirm no layout regression.
+
+---
+
 ## v1.1.2 — Diagnostic Email Pipeline
 
 ### Added
