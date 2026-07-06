@@ -1,5 +1,34 @@
 # Changelog
 
+## v1.3.0 — Professional Email Experience
+
+### Added
+- New premium customer confirmation email template inspired by the Unik Naples website identity.
+- New internal quote request email template with clearer hierarchy and reference information.
+- Improved plain-text versions for stricter email clients such as iCloud Mail and Apple Mail.
+- Refined delivery logs for Cloudflare Function troubleshooting.
+
+### Changed
+- Email communication now avoids emojis and decorative symbols.
+- Internal email subject is more descriptive and easier to search.
+- Email layout uses a cleaner, more brand-consistent structure.
+- Cache query strings updated to `v=1.3.0`.
+
+### Preserved
+- Website layout and CSS.
+- Contact form behavior and 10-second experience.
+- Service selector updates from v1.2.4.
+- Cloudflare Pages Function route `/api/contact`.
+- Resend API integration and `RESEND_API_KEY` secret usage.
+- Sender and recipient strategy using `contact@uniknaples.com`.
+
+## v1.2.4 — Service Selector Update
+
+- Added `Airbnb` to the Service Needed selector.
+- Added `Personal Organizer` to the Service Needed selector.
+- Preserved approved layout, Resend integration, Cloudflare Pages Functions and email templates.
+- Updated cache query strings to `v=1.2.4`.
+
 ## v1.2.3 — Email CTA Removal & Dark Mode Text Refinement
 
 - Removed the customer confirmation email **Visit our website** button in both light and dark modes.

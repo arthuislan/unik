@@ -4,51 +4,35 @@ Official website for **Unik Cleaning Personal Care and Organization LLC.**
 
 ## Current Version
 
-**v1.2.3 — Email CTA Removal & Dark Mode Text Refinement**
+**v1.3.0 — Professional Email Experience**
 
 ## Stable Baseline
 
-This release is built on top of the approved **v1.1.2 Stable** production version.
+This release is built on top of the approved **v1.2.4** production baseline.
 
-The professional email infrastructure remains active:
+The website layout and form experience remain preserved. This version focuses exclusively on the transactional email experience and deliverability posture.
 
-1. Visitor submits the quote form.
-2. The site sends the request to `/api/contact`.
-3. Cloudflare Pages Function validates the request.
-4. Resend sends the internal notification to `contact@uniknaples.com`.
-5. Resend sends the client confirmation email.
-6. The site displays the approved success message.
+## What changed in v1.3.0
 
+### Professional Email Experience
 
-## What changed in v1.2.3
+- Rebuilt the customer confirmation email with a refined Unik Naples visual identity.
+- Rebuilt the internal notification email received by Unik Naples.
+- Removed emoji-style elements from email communication.
+- Improved email hierarchy, spacing, typography and light/dark rendering.
+- Preserved the approved Unik Naples brand direction: clean, minimal, premium and discreet.
+- Preserved the reference ID system.
+- Improved plain-text email versions for better compatibility with strict mail clients.
+- Improved internal email subject format for easier filtering and search.
+- Preserved `From: Unik Naples <contact@uniknaples.com>` and correct `Reply-To` behavior.
+- Added clearer Cloudflare Function logs for email delivery tracing.
 
-- Refined the email header logo for light and dark mode.
-- Kept the `U` in Unik pink.
-- Set `nik` to black in light mode and white in dark mode.
-- Kept `Naples` black in light mode and white in dark mode.
-- Preserved the cleaned footer without feature icons.
-- No website layout or Resend infrastructure changes.
+## What changed in v1.2.4
 
-## What changed in v1.2.1
-
-### Email Brand Header Refinement
-
-- Customer e-mail sender is now **Unik Naples**.
-- Customer e-mail subject now uses **Unik Naples**.
-- The customer e-mail header was adjusted for light and dark mode.
-- The word **Unik** appears joined, not visually separated.
-- The previously proposed icon/value footer was not included.
-- Website layout and form infrastructure were preserved.
-
-## What changed in v1.2.0
-
-### Professional Contact Experience
-- Improved the customer confirmation email with a more premium branded layout.
-- Improved the internal UNIK notification email with a clearer structure and a **Reply to customer** button.
-- Added a readable public reference ID format: `UNIK-YYYYMMDD-XXXXXXXX`.
-- Added the reference ID to the success message shown on the website.
-- Added the reference ID to both internal and client emails.
-- Preserved the v1.0.10 / v1.1.2 form flow and email infrastructure.
+- Added Airbnb to the Service Needed selector.
+- Added Personal Organizer to the Service Needed selector.
+- Preserved Cloudflare Pages Functions and Resend email pipeline.
+- Preserved approved email UI and Dark/Light refinements from v1.2.3.
 
 ## Required Cloudflare Secret
 
@@ -60,10 +44,9 @@ RESEND_API_KEY
 
 The Resend API key must never be committed to GitHub. It must be stored only inside Cloudflare as a Secret.
 
-## Files intentionally changed
+## Files intentionally changed in v1.3.0
 
 - `functions/api/contact.js`
-- `assets/js/script.js`
 - `index.html`
 - `README.md`
 - `CHANGELOG.md`
@@ -72,20 +55,22 @@ The Resend API key must never be committed to GitHub. It must be stored only ins
 ## Files intentionally preserved
 
 - `assets/css/style.css`
+- `assets/js/script.js`
 - visual layout
 - favicon assets
 - floating buttons behavior
-- Cloudflare Function route structure
+- contact form UX
+- Cloudflare Function route `/api/contact`
 - Resend integration model
+- service selector options from v1.2.4
 
 ## Deployment notes
 
-Deploy first to a preview branch such as `test-v1.2.3`.
-
-Before merging to `main`, verify:
+Deploy first to a preview branch when possible. For direct production deployment, verify immediately after deploy:
 
 - quote form submits successfully;
-- internal UNIK email is received;
+- internal Unik Naples email is received at `contact@uniknaples.com`;
 - client confirmation email is received;
-- success message displays the reference ID;
-- no layout regression is visible.
+- reference ID appears in both emails;
+- no layout regression is visible on the website;
+- Cloudflare Function logs show successful delivery.
