@@ -1,10 +1,10 @@
 # Unik Naples Version
 
-Current version: **v1.2.3**
+Current version: **v1.2.4**
 
 ## Release
 
-**v1.2.3 — Email CTA Removal & Dark Mode Text Refinement**
+**v1.2.4 — Service Selector Update**
 
 ## Status
 
@@ -12,20 +12,19 @@ Ready for Preview validation.
 
 ## Scope
 
-This patch refines only the customer confirmation email presentation based on approved visual feedback.
+This patch adds two approved service options to the contact form selector.
 
-- Removed the **Visit our website** button from the customer confirmation email in both light and dark modes.
-- Preserved the light-mode design, except for the approved button removal.
-- In dark mode, changed the header subtitle text to white at 60% opacity.
-- In dark mode, changed the reference label text to white at 60% opacity.
-- In dark mode, changed the footer company name to white at 60% opacity.
+- Added **Airbnb** to the Service Needed selector.
+- Added **Personal Organizer** to the Service Needed selector.
+- Updated cache query strings to `v=1.2.4`.
 
 ## Preserved
 
-- Website layout.
+- Approved v1.2.3 website layout.
 - CSS layout.
 - Contact form UX.
 - Cloudflare Function route `/api/contact`.
 - Resend integration.
+- Customer and internal email templates.
 - Reference ID generation.
 - Sender name as `Unik Naples`.

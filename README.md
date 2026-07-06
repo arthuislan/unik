@@ -4,11 +4,11 @@ Official website for **Unik Cleaning Personal Care and Organization LLC.**
 
 ## Current Version
 
-**v1.2.3 — Email CTA Removal & Dark Mode Text Refinement**
+**v1.2.4 — Service Selector Update**
 
 ## Stable Baseline
 
-This release is built on top of the approved **v1.1.2 Stable** production version.
+This release is built on top of the approved **v1.2.3** production baseline.
 
 The professional email infrastructure remains active:
 
@@ -20,14 +20,14 @@ The professional email infrastructure remains active:
 6. The site displays the approved success message.
 
 
-## What changed in v1.2.3
+## What changed in v1.2.4
 
-- Refined the email header logo for light and dark mode.
-- Kept the `U` in Unik pink.
-- Set `nik` to black in light mode and white in dark mode.
-- Kept `Naples` black in light mode and white in dark mode.
-- Preserved the cleaned footer without feature icons.
-- No website layout or Resend infrastructure changes.
+This release adds two new service options to the contact form while preserving the approved v1.2.3 layout and email system.
+
+- Added Airbnb to the Service Needed selector.
+- Added Personal Organizer to the Service Needed selector.
+- Preserved Cloudflare Pages Functions and Resend email pipeline.
+- Preserved approved email UI and Dark/Light refinements.
 
 ## What changed in v1.2.1
 
@@ -80,7 +80,7 @@ The Resend API key must never be committed to GitHub. It must be stored only ins
 
 ## Deployment notes
 
-Deploy first to a preview branch such as `test-v1.2.3`.
+Deploy first to a preview branch such as `test-v1.2.4`.
 
 Before merging to `main`, verify:
 

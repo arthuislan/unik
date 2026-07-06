@@ -1,5 +1,12 @@
 # Changelog
 
+## v1.2.4 — Service Selector Update
+
+- Added `Airbnb` to the Service Needed selector.
+- Added `Personal Organizer` to the Service Needed selector.
+- Preserved approved layout, Resend integration, Cloudflare Pages Functions and email templates.
+- Updated cache query strings to `v=1.2.4`.
+
 ## v1.2.3 — Email CTA Removal & Dark Mode Text Refinement
 
 - Removed the customer confirmation email **Visit our website** button in both light and dark modes.
