@@ -2,7 +2,7 @@
 
 ## Current Version
 
-v1.3.2 — Service Selector Refinement
+v1.3.3 — Service Selector Refinement
 
 ## Summary
 
@@ -33,3 +33,8 @@ This patch updates the contact form service selector while preserving the approv
 ## Deployment
 
 Deploy through Cloudflare Pages from the approved branch after testing.
+
+
+## v1.3.3 Service Selector Translation Hotfix
+
+This patch corrects the multilingual labels for the new service selector options across English, Spanish and Brazilian Portuguese. No layout, CSS, backend, Resend, or Cloudflare changes were made.

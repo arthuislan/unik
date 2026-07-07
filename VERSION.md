@@ -1,6 +1,6 @@
 # Version
 
-v1.3.2 — Service Selector Refinement
+v1.3.3 — Service Selector Translation Hotfix
 
 ## Type
 
@@ -8,13 +8,14 @@ PATCH
 
 ## Summary
 
-Small service selector refinement built on top of the approved v1.3.1 email dark-mode and deliverability hotfix.
+Translation hotfix built on top of v1.3.2 to ensure the new service selector labels appear correctly in English, Spanish and Brazilian Portuguese.
 
 ## Changes
 
-- Airbnb service label updated to `Airbnb Cleaner`.
-- Personal Organizer service label updated to `Home Organization & Personal Organizer`.
-- Cache references updated to `v=1.3.2`.
+- English: `Airbnb Cleaner` and `Home Organization & Personal Organizer`.
+- Spanish: `Limpieza para Airbnb` and `Organización del Hogar & Personal Organizer`.
+- Portuguese: `Limpeza para Airbnb` and `Organização Residencial & Personal Organizer`.
+- Cache references updated to `v=1.3.3`.
 
 ## Status
 
