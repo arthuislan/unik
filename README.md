@@ -2,39 +2,77 @@
 
 ## Current Version
 
-v1.3.3 — Service Selector Refinement
+**v1.3.3 — Service Selector Translation Hotfix**
 
 ## Summary
 
-This patch updates the contact form service selector while preserving the approved v1.3.1 email dark-mode and deliverability hotfix.
+This release is built on top of the approved v1.2.4 production baseline.
 
-## Changes
+The professional email infrastructure remains active:
 
-- Added/standardized **Airbnb Cleaner** as a service option.
-- Updated **Personal Organizer** to **Home Organization & Personal Organizer**.
-- Updated cache references to `v=1.3.2`.
-- Preserved the website layout, Cloudflare Pages Function, Resend integration and email templates.
+1. Visitor submits the quote form.
+2. The site sends the request to `/api/contact`.
+3. Cloudflare Pages Function validates the request.
+4. Resend sends the internal notification to `contact@uniknaples.com`.
+5. Resend sends the client confirmation email.
+6. The site displays the approved success message.
+
+## What changed in v1.3.3
+
+### Service Selector Translation Hotfix
+
+This patch corrects the multilingual labels for the new service selector options across English, Spanish and Brazilian Portuguese.
+
+### Changes
+
+- Added proper multilingual labels for **Airbnb Cleaner**.
+- Added proper multilingual labels for **Home Organization & Personal Organizer**.
+- Service names now switch correctly between English, Spanish and Portuguese.
+- Updated cache references to `v=1.3.3`.
 
 ## Preserved
 
-- Approved site layout.
-- Approved email dark-mode compatibility.
-- Resend API integration.
-- Cloudflare Pages deployment structure.
-- Contact form flow.
+- Website layout.
+- CSS.
+- Cloudflare Pages Functions.
+- Resend integration.
+- Email templates.
+- Contact form workflow.
+- Dark/Light email compatibility.
 
 ## Audit
 
-- `assets/js/script.js` checked for JavaScript syntax errors.
-- `functions/api/contact.js` checked for JavaScript syntax errors.
-- CSS was not modified.
-- Backend email pipeline was not modified.
+- `assets/js/script.js` verified.
+- `functions/api/contact.js` verified.
+- No JavaScript syntax errors.
+- CSS unchanged.
+- Backend email pipeline unchanged.
 
 ## Deployment
 
-Deploy through Cloudflare Pages from the approved branch after testing.
+Deploy to a Preview branch first.
 
+After approval, merge into `main`.
 
-## v1.3.3 Service Selector Translation Hotfix
+Cloudflare Pages will automatically deploy the production version.
 
-This patch corrects the multilingual labels for the new service selector options across English, Spanish and Brazilian Portuguese. No layout, CSS, backend, Resend, or Cloudflare changes were made.
+## Previous Stable Releases
+
+### v1.2.4 — Service Selector Update
+
+- Added Airbnb service.
+- Added Personal Organizer service.
+- Preserved Cloudflare Pages Functions.
+- Preserved Resend integration.
+- Preserved approved layout.
+
+### v1.2.1 — Email Brand Header Refinement
+
+- Customer sender changed to **Unik Naples**.
+- Customer subject updated.
+- Dark/Light email improvements.
+- Layout preserved.
+
+### v1.2.0
+
+Initial professional email experience.
