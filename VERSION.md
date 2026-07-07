@@ -1,34 +1,22 @@
-# Unik Naples Version
+# Version
 
-Current version: **v1.3.0**
+## Current Version
 
-## Release
-
-**v1.3.0 — Professional Email Experience**
+v1.3.1 — Email Dark Mode and Deliverability Hotfix
 
 ## Status
 
-Ready for Preview / production validation.
+Testing branch package.
+
+## Base
+
+Built from the approved v1.2.4 email layout, with the v1.3.x infrastructure preserved.
 
 ## Scope
 
-This release refines the transactional email experience while preserving the approved v1.2.4 website.
-
-- Rebuilt customer confirmation email.
-- Rebuilt internal Unik Naples notification email.
-- Removed emoji-style email elements.
-- Improved light/dark email rendering.
-- Improved plain-text fallback emails.
-- Preserved reference ID generation.
-- Preserved Resend delivery through `/api/contact`.
-- Updated cache query strings to `v=1.3.0`.
-
-## Preserved
-
-- Approved v1.2.4 website layout.
-- CSS layout.
-- Contact form UX.
-- Service selector options.
-- Cloudflare Function route `/api/contact`.
-- Resend integration.
-- `contact@uniknaples.com` delivery destination.
+- Restore the dark-mode-safe email layout from v1.2.4.
+- Preserve Resend and Cloudflare Pages Function flow.
+- Add deliverability-oriented message headers.
+- Preserve plain-text email alternatives.
+- Preserve professional From and Reply-To fields.
+- No site layout changes.

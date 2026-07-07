@@ -1,76 +1,43 @@
 # Unik Naples Website
 
-Official website for **Unik Cleaning Personal Care and Organization LLC.**
+Official website for Unik Naples Cleaning Personal Care and Organization LLC.
 
 ## Current Version
 
-**v1.3.0 — Professional Email Experience**
+v1.3.1 — Email Dark Mode and Deliverability Hotfix
 
-## Stable Baseline
+## What this version does
 
-This release is built on top of the approved **v1.2.4** production baseline.
+This release corrects the v1.3.0 email layout regression while keeping the production Cloudflare Pages + Resend infrastructure intact.
 
-The website layout and form experience remain preserved. This version focuses exclusively on the transactional email experience and deliverability posture.
+## Included
 
-## What changed in v1.3.0
-
-### Professional Email Experience
-
-- Rebuilt the customer confirmation email with a refined Unik Naples visual identity.
-- Rebuilt the internal notification email received by Unik Naples.
-- Removed emoji-style elements from email communication.
-- Improved email hierarchy, spacing, typography and light/dark rendering.
-- Preserved the approved Unik Naples brand direction: clean, minimal, premium and discreet.
-- Preserved the reference ID system.
-- Improved plain-text email versions for better compatibility with strict mail clients.
-- Improved internal email subject format for easier filtering and search.
-- Preserved `From: Unik Naples <contact@uniknaples.com>` and correct `Reply-To` behavior.
-- Added clearer Cloudflare Function logs for email delivery tracing.
-
-## What changed in v1.2.4
-
-- Added Airbnb to the Service Needed selector.
-- Added Personal Organizer to the Service Needed selector.
-- Preserved Cloudflare Pages Functions and Resend email pipeline.
-- Preserved approved email UI and Dark/Light refinements from v1.2.3.
+- Restores the approved v1.2.4 dark-mode-safe customer email layout.
+- Preserves the contact form and `/api/contact` Cloudflare Pages Function.
+- Preserves Resend transactional email delivery.
+- Keeps `contact@uniknaples.com` as the professional sender and recipient.
+- Preserves plain-text alternatives for Apple Mail, iCloud, Gmail, Outlook, and other clients.
+- Adds request tracking headers for cleaner diagnostics and provider reputation signals.
+- Updates cache references to v1.3.1.
 
 ## Required Cloudflare Secret
 
-The project requires this Cloudflare Pages secret in both **Production** and **Preview** when testing branches:
+The production deployment requires:
 
-```text
+```
 RESEND_API_KEY
 ```
 
-The Resend API key must never be committed to GitHub. It must be stored only inside Cloudflare as a Secret.
+This key must remain stored only in Cloudflare Pages Secrets. It must never be committed to GitHub.
 
-## Files intentionally changed in v1.3.0
+## Deployment note
 
-- `functions/api/contact.js`
-- `index.html`
-- `README.md`
-- `CHANGELOG.md`
-- `VERSION.md`
+After adding or changing secrets, redeploy the Cloudflare Pages project so the production deployment can access the latest environment.
 
-## Files intentionally preserved
+## Audit Confirmation
 
-- `assets/css/style.css`
-- `assets/js/script.js`
-- visual layout
-- favicon assets
-- floating buttons behavior
-- contact form UX
-- Cloudflare Function route `/api/contact`
-- Resend integration model
-- service selector options from v1.2.4
-
-## Deployment notes
-
-Deploy first to a preview branch when possible. For direct production deployment, verify immediately after deploy:
-
-- quote form submits successfully;
-- internal Unik Naples email is received at `contact@uniknaples.com`;
-- client confirmation email is received;
-- reference ID appears in both emails;
-- no layout regression is visible on the website;
-- Cloudflare Function logs show successful delivery.
+- `functions/api/contact.js` checked for JavaScript syntax errors.
+- `assets/js/script.js` checked for JavaScript syntax errors.
+- Site CSS/layout preserved.
+- Resend delivery flow preserved.
+- Email dark-mode compatibility restored from v1.2.4.
