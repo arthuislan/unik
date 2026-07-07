@@ -1,30 +1,33 @@
-# Unik Naples Version
+# Version
 
-Current version: **v1.2.4**
+Current version: **v1.3.3**
 
-## Release
+## Type
 
-**v1.2.4 — Service Selector Update**
+PATCH
 
-## Status
+## Summary
 
-Ready for Preview validation.
+Translation hotfix built on top of v1.3.2 to ensure the new service selector labels appear correctly in English, Spanish and Brazilian Portuguese.
 
-## Scope
+## Changes
 
-This patch adds two approved service options to the contact form selector.
-
-- Added **Airbnb** to the Service Needed selector.
-- Added **Personal Organizer** to the Service Needed selector.
-- Updated cache query strings to `v=1.2.4`.
+- English: `Airbnb Cleaner` and `Home Organization & Personal Organizer`.
+- Spanish: `Limpieza para Airbnb` and `Organización del Hogar & Personal Organizer`.
+- Portuguese: `Limpeza para Airbnb` and `Organização Residencial & Organizador Pessoal`.
+- Updated cache references to `v=1.3.3`.
 
 ## Preserved
 
-- Approved v1.2.3 website layout.
+- Approved website layout.
 - CSS layout.
 - Contact form UX.
 - Cloudflare Function route `/api/contact`.
 - Resend integration.
 - Customer and internal email templates.
 - Reference ID generation.
-- Sender name as `Unik Naples`.
+- Sender name `Unik Naples`.
+
+## Status
+
+Ready for production after Preview approval.

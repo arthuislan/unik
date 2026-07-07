@@ -1,14 +1,12 @@
 # Unik Naples Website
 
-Official website for **Unik Cleaning Personal Care and Organization LLC.**
-
 ## Current Version
 
-**v1.2.4 — Service Selector Update**
+**v1.3.3 — Service Selector Translation Hotfix**
 
-## Stable Baseline
+## Summary
 
-This release is built on top of the approved **v1.2.3** production baseline.
+This release is built on top of the approved v1.2.4 production baseline.
 
 The professional email infrastructure remains active:
 
@@ -19,73 +17,62 @@ The professional email infrastructure remains active:
 5. Resend sends the client confirmation email.
 6. The site displays the approved success message.
 
+## What changed in v1.3.3
 
-## What changed in v1.2.4
+### Service Selector Translation Hotfix
 
-This release adds two new service options to the contact form while preserving the approved v1.2.3 layout and email system.
+This patch corrects the multilingual labels for the new service selector options across English, Spanish and Brazilian Portuguese.
 
-- Added Airbnb to the Service Needed selector.
-- Added Personal Organizer to the Service Needed selector.
-- Preserved Cloudflare Pages Functions and Resend email pipeline.
-- Preserved approved email UI and Dark/Light refinements.
+### Changes
 
-## What changed in v1.2.1
+- Added proper multilingual labels for **Airbnb Cleaner**.
+- Added proper multilingual labels for **Home Organization & Personal Organizer**.
+- Service names now switch correctly between English, Spanish and Portuguese.
+- Updated cache references to `v=1.3.3`.
 
-### Email Brand Header Refinement
+## Preserved
 
-- Customer e-mail sender is now **Unik Naples**.
-- Customer e-mail subject now uses **Unik Naples**.
-- The customer e-mail header was adjusted for light and dark mode.
-- The word **Unik** appears joined, not visually separated.
-- The previously proposed icon/value footer was not included.
-- Website layout and form infrastructure were preserved.
+- Website layout.
+- CSS.
+- Cloudflare Pages Functions.
+- Resend integration.
+- Email templates.
+- Contact form workflow.
+- Dark/Light email compatibility.
 
-## What changed in v1.2.0
+## Audit
 
-### Professional Contact Experience
-- Improved the customer confirmation email with a more premium branded layout.
-- Improved the internal UNIK notification email with a clearer structure and a **Reply to customer** button.
-- Added a readable public reference ID format: `UNIK-YYYYMMDD-XXXXXXXX`.
-- Added the reference ID to the success message shown on the website.
-- Added the reference ID to both internal and client emails.
-- Preserved the v1.0.10 / v1.1.2 form flow and email infrastructure.
+- `assets/js/script.js` verified.
+- `functions/api/contact.js` verified.
+- No JavaScript syntax errors.
+- CSS unchanged.
+- Backend email pipeline unchanged.
 
-## Required Cloudflare Secret
+## Deployment
 
-The project requires this Cloudflare Pages secret in both **Production** and **Preview** when testing branches:
+Deploy to a Preview branch first.
 
-```text
-RESEND_API_KEY
-```
+After approval, merge into `main`.
 
-The Resend API key must never be committed to GitHub. It must be stored only inside Cloudflare as a Secret.
+Cloudflare Pages will automatically deploy the production version.
 
-## Files intentionally changed
+## Previous Stable Releases
 
-- `functions/api/contact.js`
-- `assets/js/script.js`
-- `index.html`
-- `README.md`
-- `CHANGELOG.md`
-- `VERSION.md`
+### v1.2.4 — Service Selector Update
 
-## Files intentionally preserved
+- Added Airbnb service.
+- Added Personal Organizer service.
+- Preserved Cloudflare Pages Functions.
+- Preserved Resend integration.
+- Preserved approved layout.
 
-- `assets/css/style.css`
-- visual layout
-- favicon assets
-- floating buttons behavior
-- Cloudflare Function route structure
-- Resend integration model
+### v1.2.1 — Email Brand Header Refinement
 
-## Deployment notes
+- Customer sender changed to **Unik Naples**.
+- Customer subject updated.
+- Dark/Light email improvements.
+- Layout preserved.
 
-Deploy first to a preview branch such as `test-v1.2.4`.
+### v1.2.0
 
-Before merging to `main`, verify:
-
-- quote form submits successfully;
-- internal UNIK email is received;
-- client confirmation email is received;
-- success message displays the reference ID;
-- no layout regression is visible.
+Initial professional email experience.

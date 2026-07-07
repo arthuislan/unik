@@ -268,13 +268,21 @@ async function sendEmail(env, payload, label, requestId) {
   return result;
 }
 
+function buildEmailHeaders(requestId, messageType) {
+  return {
+    'X-Entity-Ref-ID': requestId,
+    'X-Unik-Request-ID': requestId,
+    'X-Unik-Message-Type': messageType
+  };
+}
 
 function buildInternalEmail(cleanData, submittedAt, requestId) {
   return {
-    from: `Unik Naples Website <${COMPANY_EMAIL}>`,
+    from: `Unik Naples <${COMPANY_EMAIL}>`,
     to: [COMPANY_EMAIL],
     reply_to: cleanData.email,
-    subject: `New Quote Request — ${cleanData.name}`,
+    subject: `New quote request — Unik Naples — ${requestId}`,
+    headers: buildEmailHeaders(requestId, 'admin_notification'),
     html: internalHtmlEmail(cleanData, { submittedAt, requestId }),
     text: `New Quote Request\n\nRequest ID: ${requestId}\nName: ${cleanData.name}\nPhone: ${cleanData.phone}\nEmail: ${cleanData.email}\nService: ${cleanData.service}\nMessage: ${cleanData.message}\nSubmitted at: ${submittedAt}`
   };
@@ -286,6 +294,7 @@ function buildClientEmail(cleanData, requestId) {
     to: [cleanData.email],
     reply_to: COMPANY_EMAIL,
     subject: clientSubject(cleanData.language),
+    headers: buildEmailHeaders(requestId, 'customer_confirmation'),
     html: clientHtmlEmail({ name: cleanData.name, language: cleanData.language, requestId }),
     text: clientPlainText(cleanData.name, cleanData.language, requestId)
   };
