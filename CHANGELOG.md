@@ -1,38 +1,24 @@
 # Changelog
 
-## v1.3.1 — Email Dark Mode and Deliverability Hotfix
-
-### Objective
-
-Correct the v1.3.0 email layout regression and preserve the approved v1.2.4 dark-mode-safe email experience while maintaining the current Cloudflare Pages and Resend infrastructure.
+## v1.3.2 — Service Selector Refinement
 
 ### Changed
 
-- Restored the approved customer email layout from v1.2.4.
-- Preserved dark-mode overrides for Apple Mail and iCloud Mail.
-- Preserved professional sender format: `Unik Naples <contact@uniknaples.com>`.
-- Preserved `Reply-To` behavior.
-- Preserved HTML + plain-text email alternatives.
-- Added request tracking headers to Resend payloads.
-- Updated cache references to v1.3.1.
+- Updated the service selector option from `Personal Organizer` to `Home Organization & Personal Organizer`.
+- Updated the Airbnb service option to `Airbnb Cleaner`.
+- Updated cache references to `v=1.3.2`.
 
 ### Preserved
 
-- Website layout.
-- CSS visual structure.
-- Contact form behavior.
-- `/api/contact` endpoint.
+- v1.3.1 email dark-mode compatibility hotfix.
+- v1.3.1 deliverability-related email improvements.
+- Cloudflare Pages Function `/api/contact`.
 - Resend integration.
-- `RESEND_API_KEY` secret usage.
-- Service selector options from v1.2.4.
+- Website layout and CSS.
 
 ### Audit
 
-- `functions/api/contact.js` passed JavaScript syntax check.
-- `assets/js/script.js` passed JavaScript syntax check.
-- Site CSS was not altered.
-- No API keys or secrets were added to the repository.
-
-### Status
-
-Testing branch package.
+- JavaScript syntax checked.
+- Function syntax checked.
+- No CSS changes.
+- No backend email logic changes.
